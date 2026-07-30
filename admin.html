@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dil Khol Desire - Admin Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0f172a; color: #fff; margin: 0; padding: 20px; }
+        h1 { color: #f43f5e; text-align: center; }
+        .container { max-width: 1000px; margin: auto; background: #1e293b; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #e11d48; color: white; }
+        tr:nth-child(even) { background: #0f172a; }
+        .ip-badge { background: #3b82f6; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Control Panel - Booking Records</h1>
+        <p>यहाँ सभी यूज़र्स का डेटा, स्लॉट टाइम और IP एड्रेस सुरक्षित है।</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>नाम / निकनेम</th>
+                    <th>मोबाइल नंबर</th>
+                    <th>तारीख व समय</th>
+                    <th>IP एड्रेस</th>
+                </tr>
+            </thead>
+            <tbody id="data-table">
+                <tr>
+                    <td colspan="5" style="text-align:center;">डेटा लोड हो रहा है...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchRecords() {
+            try {
+                const res = await fetch('/api/get-bookings');
+                const data = await res.json();
+                const tbody = document.getElementById('data-table');
+                
+                if(!data || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">अभी कोई रिकॉर्ड मौजूद नहीं है।</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.map((item, index) => `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${item.name || 'N/A'}</td>
+                        <td>${item.phone || 'N/A'}</td>
+                        <td>${new Date(item.createdAt).toLocaleString('hi-IN')}</td>
+                        <td><span class="ip-badge">${item.ipAddress || 'IP Saved'}</span></td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                document.getElementById('data-table').innerHTML = '<tr><td colspan="5" style="text-align:center; color:#f87171;">डेटा लोड करने में समस्या आई।</td></tr>';
+            }
+        }
+        fetchRecords();
+    </script>
+</body>
+</html>
+
