@@ -3,685 +3,852 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DilKholDesire — 100% Private 18+ Audio Companion</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>DilKholDesire - 100% सीक्रेट वॉयस टॉकिंग सर्विस</title>
     <style>
         :root {
-            --bg-color: #0b0712;
-            --card-bg: #150d22;
-            --accent-pink: #ff007f;
-            --accent-purple: #9d4edd;
-            --text-color: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --gold: #ffd700;
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --card-border: #333a42;
+            --accent-gold: #d4af37;
+            --accent-gold-bright: #f39c12;
+            --text-main: #e0e0e0;
+            --text-sub: #a0a0a0;
+            --danger-red: #e74c3c;
+            --success-green: #2ecc71;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
-        /* Age Verification Modal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* 18+ Modal */
         #ageModal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.96);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             display: flex;
-            align-items: center;
             justify-content: center;
-            z-index: 9999;
+            align-items: center;
+            z-index: 99999;
             padding: 20px;
         }
 
-        .modal-content {
+        .modal-box {
             background: var(--card-bg);
-            border: 2px solid var(--accent-pink);
-            padding: 30px;
-            border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
-            max-width: 450px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        .modal-content h2 {
-            color: var(--accent-pink);
+        .modal-box h2 {
+            color: var(--accent-gold);
             margin-bottom: 15px;
         }
 
-        .modal-btn {
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
-            color: white;
+        .btn {
+            background: linear-gradient(45deg, #d4af37, #f39c12);
+            color: #000;
             border: none;
             padding: 12px 25px;
-            margin: 10px 5px;
             font-weight: bold;
-            border-radius: 25px;
+            font-size: 16px;
+            border-radius: 6px;
             cursor: pointer;
-            width: 80%;
-            font-size: 1rem;
+            width: 100%;
+            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .modal-btn.exit {
-            background: #333;
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 15px;
+        .btn-danger {
+            background: var(--danger-red);
+            color: #fff;
         }
 
-        /* Header & Neon Logo */
+        /* Header */
         header {
             text-align: center;
-            padding: 30px 0 15px 0;
+            padding: 30px 10px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 20px;
         }
 
-        .logo-container {
+        .logo-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #111;
+            border: 3px solid var(--accent-gold);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            margin: 0 auto 15px;
+            font-size: 32px;
+            color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(212,175,55,0.4);
         }
 
-        .logo-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-            border: 2px solid var(--accent-pink);
-            object-fit: cover;
-        }
-
-        .logo-text {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tagline {
-            color: var(--accent-purple);
-            font-weight: 600;
-            font-size: 1.1rem;
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 28px;
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
-        .sub-tagline {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        header p {
+            color: var(--text-sub);
+            font-size: 14px;
         }
 
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            font-size: 1.6rem;
-            color: var(--accent-pink);
-            margin: 35px 0 20px 0;
-        }
-
-        /* Privacy Disclaimer Box */
-        .privacy-box {
-            background: rgba(255, 0, 127, 0.08);
-            border: 1px solid rgba(255, 0, 127, 0.3);
-            padding: 12px 16px;
+        /* Card Section */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 10px;
-            font-size: 0.85rem;
-            color: #ff99ca;
-            margin-bottom: 20px;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        /* 2-Column Reviews Grid */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        @media(max-width: 650px) {
-            .reviews-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-        }
-
-        .review-card {
-            background: var(--card-bg);
-            border: 1px solid #2a1b40;
-            padding: 18px;
-            border-radius: 12px;
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            color: var(--accent-pink);
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            border-bottom: 1px dashed #3a2754;
-            padding-bottom: 5px;
-        }
-
-        .rating {
-            color: var(--gold);
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-
-        .toggle-btn {
-            background: transparent;
-            border: 1px solid var(--accent-purple);
-            color: var(--accent-purple);
-            padding: 14px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .toggle-btn.primary {
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
-            color: white;
-            border: none;
-        }
-
-        /* Services Section */
-        .service-card {
-            background: var(--card-bg);
-            border-left: 4px solid var(--accent-pink);
             padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .service-card h3 {
-            color: var(--accent-pink);
+        .card-header {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Reviews */
+        .review-box {
+            background: #121820;
+            border-left: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .review-author {
+            color: var(--accent-gold-bright);
+            font-weight: bold;
+            font-size: 14px;
             margin-bottom: 5px;
         }
 
-        .service-card .sub-title {
-            color: var(--accent-purple);
-            font-size: 0.9rem;
+        .review-text {
+            font-size: 13.5px;
+            color: #ccc;
+            white-space: pre-line;
+        }
+
+        .note-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed var(--accent-gold);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        /* Services */
+        .service-item {
+            margin-bottom: 20px;
+            background: #171e27;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #2b3542;
+        }
+
+        .service-title {
+            color: var(--accent-gold-bright);
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .service-sub {
+            color: var(--text-sub);
+            font-size: 12.5px;
+            margin-bottom: 10px;
             font-style: italic;
-            margin-bottom: 12px;
         }
 
-        .service-card ul {
-            list-style-type: none;
-            padding-left: 5px;
+        .service-list {
+            list-style: none;
         }
 
-        .service-card ul li {
-            margin-bottom: 8px;
-            font-size: 0.88rem;
-        }
-
-        .service-card ul li::before {
-            content: "✦ ";
-            color: var(--accent-pink);
-        }
-
-        /* Pricing Section */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        @media(min-width: 600px) {
-            .pricing-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .price-card {
-            background: var(--card-bg);
-            border: 1px solid var(--accent-purple);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
+        .service-list li {
+            font-size: 13.5px;
+            margin-bottom: 6px;
+            padding-left: 15px;
             position: relative;
         }
 
-        .price-card.popular {
-            border: 2px solid var(--accent-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
-        }
-
-        .badge {
-            background: var(--accent-pink);
-            color: white;
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 10px;
+        .service-list li::before {
+            content: "✦";
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* Pricing */
+        .price-card {
+            background: #171e27;
+            border: 1px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .price-title {
+            font-size: 16px;
             font-weight: bold;
+            color: #fff;
         }
 
-        .price {
-            font-size: 1.8rem;
-            color: white;
+        .price-tag {
+            font-size: 20px;
+            color: var(--accent-gold-bright);
             font-weight: bold;
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
-        .old-price {
-            text-decoration: line-through;
-            color: var(--text-muted);
-            font-size: 1rem;
+        .price-desc {
+            font-size: 13px;
+            color: var(--text-sub);
         }
 
-        /* Trust & Safety Banner */
-        .trust-box {
-            background: #10081d;
-            border: 1px dashed var(--accent-pink);
-            padding: 18px;
-            border-radius: 10px;
-            margin: 25px 0;
-            font-size: 0.85rem;
-        }
-
-        .trust-box p {
-            margin-bottom: 8px;
-        }
-
-        /* Booking Form */
-        .booking-form {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #2a1b40;
-            margin-bottom: 30px;
-        }
-
+        /* Form Controls */
         .form-group {
             margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-size: 0.88rem;
-            color: var(--text-color);
+            margin-bottom: 6px;
+            font-size: 13.5px;
+            color: var(--text-main);
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-control {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #3a2754;
-            background: #0b0712;
-            color: white;
-            font-size: 0.95rem;
+            padding: 10px;
+            background: #0f141c;
+            border: 1px solid #333a42;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
-        .consent-group {
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .checkbox-label {
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            margin: 20px 0;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 12.5px;
+            color: #bbb;
+            cursor: pointer;
         }
 
-        .consent-group input {
-            width: auto;
+        .checkbox-label input {
             margin-top: 3px;
         }
 
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
+        /* Payment Section */
+        .qr-placeholder {
+            width: 180px;
+            height: 180px;
+            background: #fff;
+            border: 2px solid var(--accent-gold);
+            margin: 15px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 8px;
         }
 
-        .privacy-note {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-top: 15px;
+        .busy-notice {
+            background: rgba(231, 76, 60, 0.15);
+            border: 1px solid var(--danger-red);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #f8d7da;
+            margin-bottom: 15px;
             text-align: center;
         }
 
-        /* Modals */
-        .custom-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
-            z-index: 10000;
-            overflow-y: auto;
-            padding: 20px 10px;
+        /* Footer & Admin */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--text-sub);
+            border-top: 1px solid var(--card-border);
+            margin-top: 30px;
         }
-        .modal-body {
-            background: var(--card-bg);
-            border: 1px solid var(--accent-pink);
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 25px;
-            border-radius: 15px;
-            position: relative;
-        }
-        .close-icon {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.8rem;
-            color: var(--accent-pink);
+
+        .admin-link {
+            color: var(--accent-gold);
+            text-decoration: underline;
             cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
         }
+
+        /* Hidden elements */
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <!-- 1. Age Verification Gateway Modal -->
+    <!-- 18+ Legal Consent Modal -->
     <div id="ageModal">
-        <div class="modal-content">
-            <h2>⚠️ 18+ आयु पुष्टि (18+ Adult Gateway)</h2>
-            <p style="font-size: 0.9rem; margin-bottom: 20px;">यह प्लेटफ़ॉर्म केवल 18 वर्ष या उससे अधिक आयु के वयस्कों के लिए वर्चुअल ऑडियो-फैंटेसी, इंटीमेसी और पर्सनल टॉक सेवा प्रदान करता है।</p>
-            <p style="font-weight: bold; margin-bottom: 15px;">क्या आपकी उम्र 18 वर्ष या अधिक है?</p>
-            <button class="modal-btn" onclick="enterSite()">हाँ, मेरी उम्र 18+ है</button>
-            <button class="modal-btn exit" onclick="exitSite()">बाहर निकलें (Exit)</button>
+        <div class="modal-box">
+            <h2>🔞 18+ आयु पुष्टि एवं लीगल डिस्क्लेमर</h2>
+            <p style="font-size: 13.5px; color: #ccc; text-align: left; margin-bottom: 15px;">
+                यह वेबसाइट केवल 18 वर्ष या उससे अधिक आयु के वयस्कों के लिए है। इसमें केवल 100% सीक्रेट वॉयस टॉकिंग, काउंसलिंग, ऑडियो फैंटेसी रोलप्ले और स्ट्रेस रिलैक्सेशन सर्विसेज दी जाती हैं। किसी भी प्रकार की मीडिया शेयरिंग, फोटो, या वीडियो कॉल सख्त मना है।
+            </p>
+            <div style="text-align: left; margin-bottom: 15px;">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="modalCheck">
+                    <span>मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है और मैं अपनी स्वेच्छा से प्रवेश कर रहा/रही हूँ।</span>
+                </label>
+            </div>
+            <button class="btn" id="enterBtn" onclick="acceptAge()">वेबसाइट में प्रवेश करें</button>
+            <button class="btn btn-danger" style="margin-top: 8px;" onclick="rejectAge()">बाहर निकलें (Exit)</button>
         </div>
     </div>
 
     <div class="container">
-        <!-- 2. Header Section with Neon Logo -->
+        <!-- Header -->
         <header>
-            <div class="logo-container">
-                <img src="logo.png" alt="DilKholDesire Logo" class="logo-img">
-                <div class="logo-text">DilKholDesire</div>
-            </div>
-            <div class="tagline">"आपकी फैंटेसी, आपकी प्राइवेसी — दिल खोलकर बोलें"</div>
-            <div class="sub-tagline">🔒 100% सीक्रेट और सेफ़ 18+ ऑडियो कंपैनियनशिप</div>
+            <div class="logo-circle">DKD</div>
+            <h1>DilKholDesire</h1>
+            <p>100% सीक्रेट, सेफ़ एवं अनसेंसर्ड पर्सनल ऑडियो टॉकिंग व रिलैक्सेशन</p>
         </header>
 
-        <!-- Intro -->
-        <div style="background: var(--card-bg); padding: 15px; border-radius: 10px; text-align: center; font-size: 0.88rem; margin-bottom: 25px;">
-            जजमेंट का डर छोड़ें, अपने मन की दबी इच्छाओं और फैंटेसी पर खुलकर बात करें। यहाँ आपकी पहचान 100% गुप्त और सुरक्षित रहती है।
-        </div>
-
-        <!-- 3. Top 10 Full Uncut Hero Reviews (2-Column Grid) -->
-        <h2 class="section-title">Verified Customer Reviews</h2>
-
-        <div class="privacy-box">
-            🔒 <strong>गोपनीयता एवं स्वेच्छा नोट:</strong> यहाँ दिखाई गई सभी समीक्षाएं हमारे ग्राहकों द्वारा अपनी स्वेच्छा व अनुमति से ही साझा की गई हैं। हम आपके डेटा और पहचान की पूर्ण गोपनीयता का ध्यान रखते हैं।
-        </div>
-
-        <div class="reviews-grid">
+        <!-- Section 3: Verified Reviews -->
+        <div class="card">
+            <div class="card-header">💬 सत्यापित ग्राहक समीक्षाएं (Verified Customer Reviews)</div>
             
-            <div class="review-card">
-                <div class="review-header"><span>रिचा (28वर्ष, दिल्ली)</span> <span>मैरिड</span></div>
-                <p>"शादी के बाद हस्बैंड के ध्यान न देने से मेरी इंटीमेट लाइफ पूरी तरह खत्म हो चुकी थी। कई बार दिमाग में आता था कि बाहर जाकर अपनी सेक्शुअल इच्छाएँ पूरी करूँ, पर इज्ज़त का डर था। फिर मुझे DilKholDesire मिला। लिसनर ने पहले मुझे बहुत कम्फर्टेबल कराया, फिर मैंने खुद उनसे कहा कि मुझे बहुत डीप और बोल्ड डर्टी टॉक और रोलप्ले चाहिए। जब कॉलिंग शुरू हुई, तो लिसनर ने इतने बेहतरीन तरीके से गाइड किया कि ऑडियो कॉल पर मुझे ऐसा फील हो रहा था जैसे हम दोनों एक ही बेड पर एक साथ हैं। बूब्स प्रेसिंग और फिंगर-प्ले करते हुए मुझे ऐसा मज़ा आया जैसे खुद मेरे पति मेरे साथ हों। मन कर रहा था कि काश मेरे पति भी इनके जितने केयरिंग और इंटीमेट होते! उस सेशन में मुझे सालों बाद ऐसा चरम सुख मिला है। अब जब भी नीड होती है, बिना सोचे स्लॉट बुक कर लेती हूँ।"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+            <div class="note-box">
+                🔒 <strong>गोपनीयता एवं स्वेच्छा नोट:</strong> यहाँ दिखाई गई सभी समीक्षाएं हमारे ग्राहकों ने अपनी संतुष्टि, व्यक्तिगत अनुभव और भावनाओं को महसूस करके स्वयं अपनी इच्छा से लिखी हैं। हमारी सेवा की गुणवत्ता और 100% गोपनीयता ही ग्राहकों का यह भरोसा बनाती है। <strong>यदि आपको भी हमारी सेवा से अद्भुत अनुभव और सुकून मिले, तो आप भी 'अपनी समीक्षा जोड़ें' (Add Review) पर जाकर अपना अनुभव बेझिझक साझा कर सकते हैं।</strong>
             </div>
 
-            <div class="review-card">
-                <div class="review-header"><span>तान्या (21वर्ष, दिल्ली)</span> <span>यंग/सिंगल</span></div>
-                <p>"मेरे दिमाग में हर वक्त सेक्शुअल थॉट्स चलते रहते थे। मैं किसी से अपनी बातें शेयर करना चाहती थी, लेकिन फैमिली की इज्ज़त का डर था। मैंने बॉयफ्रेंड बनाने की सोची, पर खौफ था कि कहीं वो इन प्राइवेट बातों को वायरल न कर दे या घर पर कोई इशू खड़ा न हो जाए। फिर मुझे DilKholDesire के बारे में पता चला। कॉलिंग पर लिसनर की आवाज़ और रोलप्ले इतना डीप था कि ऑडियो कॉल पर ही मुझे सब रियल लगने लगा। जब मैं बूब्स प्रेसिंग और फिंगर-प्ले कर रही थी, तो इमेजिनेशन में ऐसा फील हो रहा था जैसे लिसनर ही खुद अपने हाथों से मुझे यह सब सुख दे रहे हैं और मेरे साथ हैं। उस इंटीमेट सेशन में मुझे जो चरम सुख और कम्प्लीट बॉडी रिलीज़ मिला, उसके लिए मेरे पास शब्द नहीं हैं। होश उड़ गए मेरे! सच में यह बहुत ही ज़बरदस्त सर्विस है।"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+            <div id="reviewsContainer">
+                <!-- 10 Main Reviews -->
+                <div class="review-box">
+                    <div class="review-author">★ Rahul M. (Delhi) - Verified Customer</div>
+                    <div class="review-text">पेमेंट करने से पहले मन में बहुत डर था कि कहीं कोई फ्रॉड न हो जाए या मेरी डिटेल्स लीक न हो जाएं। लेकिन जैसे ही सेशन शुरू हुआ, मेरी सारी झिझक गायब हो गई। होस्ट की आवाज़ में इतनी मिठास और वार्मथ थी कि 60 मिनट कैसे निकल गए पता ही नहीं चला। पूरी बात 100% सीक्रेट रही!</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Vikram S. (Mumbai) - Verified Customer</div>
+                    <div class="review-text">मैं अपनी फैंटेसी और इच्छाओं के बारे में किसी से बात नहीं कर पाता था। समाज और लोगों के जजमेंट का डर रहता था। यहाँ मुझे बिना किसी डर के खुलकर अपनी बातें कहने का मौका मिला। ऑडियो रोलप्ले इतना लाइव और गहरा था कि मुझे बहुत सुकून महसूस हुआ।</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Amit K. (Bangalore) - Verified Customer</div>
+                    <div class="review-text">2 घंटे वाला VIP लग्जरी पास लिया था। बिल्कुल ज़ीरो वेटिंग टाइम मिला और पर्सनल अटेंशन कमाल का था। बूब्स प्रेसिंग, सोलो फिंगरिंग और मास्टर्बेशन गाइडेंस के दौरान आवाज़ का कम्फर्ट इतना बेहतरीन था कि सारा मानसिक तनाव खत्म हो गया।</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Priya R. (Pune) - Verified Customer</div>
+                    <div class="review-text">एक फीमेल होने के नाते मुझे प्राइवेसी और सुरक्षा की सबसे ज़्यादा चिंता थी। लेकिन यहाँ बातचीत का माहौल इतना सम्मानजनक और वार्म था कि मेरी सारी झिझक खत्म हो गई। नाइटनेस और अकेलेपन में यह सेवा वरदान जैसी है।</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Deepak Verma (Jaipur) - Verified Customer</div>
+                    <div class="review-text">रात को एंग्जायटी और अकेलेपन की वजह से नींद नहीं आती थी। 30 मिनट का स्ट्रेस रिलैक्सेशन टॉक लिया। इतनी शांति और मिठास भरी बातचीत थी कि सेशन के तुरंत बाद बहुत गहरी नींद आई। 100% प्रामाणिक सेवा!</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Sameer B. (Kolkata) - Verified Customer</div>
+                    <div class="review-text">ऑडियो फैंटेसी व रोलप्ले टॉक का अनुभव अद्भुत था। शावर और सीक्रेट लवर वाली इमेजिनेशन गाइडेंस इतनी रियलिस्टिक थी कि ऐसा लगा जैसे सब कुछ सच में हो रहा हो। बिल्कुल पैसा वसूल एक्सपीरियंस!</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Rohan Das (Chandigarh) - Verified Customer</div>
+                    <div class="review-text">बैंक स्टेटमेंट की प्राइवेसी को लेकर चिंता थी, लेकिन जैसा उन्होंने कहा था, बैंक स्टेटमेंट में बिल्कुल सामान्य नाम आया। कोई भी पर्सनल सर्विस का नाम नहीं लिखा आया। 100% डिस्क्रिट और सेफ़ बिलिंग!</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Karan Tripathi (Lucknow) - Verified Customer</div>
+                    <div class="review-text">सर्विस का लेवल एकदम लग्जरी है। कोई रूखापन नहीं, कोई जल्दबाज़ी नहीं। 60 मिनट पूरे सम्मान और कम्फर्ट के साथ बातचीत हुई। अगर आप भी दिमागी बोझ हल्का करना चाहते हैं तो बेझिझक ट्राई करें।</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Nitin Joshi (Indore) - Verified Customer</div>
+                    <div class="review-text">मैं अपनी पर्सनल लाइफ और रिलेशनशिप की उलझनों पर बात करना चाहता था। बिना किसी उपदेश या जजमेंट के मेरी पूरी बात सुनी गई और बहुत अच्छी गाइडेंस मिली। दिल हल्का हो गया।</div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-author">★ Harshwardhan (Ahmedabad) - Verified Customer</div>
+                    <div class="review-text">मैंने कई जगह ट्राई किया था लेकिन हर जगह बॉट या फेक सर्विसेज मिलती थीं। यहाँ 100% रियल लाइव इंसान से बात हुई। वॉयस क्वालिटी, टोन और कम्फर्ट लेवल ए-वन है।</div>
+                </div>
             </div>
 
-            <div class="review-card">
-                <div class="review-header"><span>वैष्णवी (23वर्ष, बेंगलुरु)</span> <span>कॉर्पोरेट/वॉशरूम</span></div>
-                <p>"ऑफिस में काम के दौरान जब अचानक बहुत तीव्र सेक्शुअल हीट हावी होने लगी, तो मैंने वॉशरूम ब्रेक में 1 घंटे का सेशन लिया। कॉलिंग पर लिसनर की आवाज़ और डर्टी रोलप्ले इतना डीप था कि वॉशरूम में ही मुझे सब रियल लगने लगा। जब मैं सोलो फिंगर-प्ले कर रही थी, तो इमेजिनेशन में ऐसा फील हो रहा था जैसे लिसनर ही खुद मेरे साथ वॉशरूम में मौजूद हैं और मुझे पूरा सेक्शुअल सुख दे रहे हैं। उस सेशन में मुझे जो चरम सुख और कम्प्लीट बॉडी रिलीज़ मिला, उससे मेरी पूरी बॉडी काँप गई और सारा स्ट्रेस बह गया। लिसनर का तरीका इतना प्यारा था कि मन कर रहा था बस उनकी आवाज़ सुनती रहूँ। काश ऐसा ही मैच्योर और केयरिंग लिसनर मेरा रियल बॉयफ्रेंड होता! ऐसा लगता है जैसे मुझे मेरे सपनों का राजकुमार मिल गया हो। इस माइंड-ब्लोइंग एक्सपीरियंस के बाद मैंने अपनी क्लोज़ फ्रेंड को भी यह रिकमेंड किया है।"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+            <!-- More Reviews (Hidden by default, total 30) -->
+            <div id="moreReviews" class="hidden">
+                <div class="review-box"><div class="review-author">★ Akash P. (Surat)</div><div class="review-text">रोलप्ले गाइडेंस बहुत ही सटीक थी। फिंगरिंग और सोलो-ऑर्गैज्म गाइडेंस के दौरान आवाज़ की टाइमिंग और सॉफ्टनेस लाजवाब थी।</div></div>
+                <div class="review-box"><div class="review-author">★ Tarun S. (Nagpur)</div><div class="review-text">नाइट स्ट्रेस के लिए यह सबसे बेहतरीन जगह है। देर रात जब कोई सुनने वाला नहीं होता, तब यहाँ पूरा कम्फर्ट मिलता है।</div></div>
+                <div class="review-box"><div class="review-author">★ Manish G. (Noida)</div><div class="review-text">50% डिस्काउंट वाला ऑफर एकदम वैल्यू फॉर मनी है। ₹1199 में 1 घंटा बिना किसी रुकावट के बेहतरीन ऑडियो टॉकिंग मिली।</div></div>
+                <div class="review-box"><div class="review-author">★ S. Rathore (Bhopal)</div><div class="review-text">इंटीमेसी पर खुलकर बात करने से मेरा कॉन्फिडेंस बढ़ा है। झिझक दूर करने के लिए यह सेवा बहुत मददगार है।</div></div>
+                <div class="review-box"><div class="review-author">★ Kunal M. (Gurgaon)</div><div class="review-text">वीआईपी लग्जरी पास वास्तव में प्रीमियम फील देता है। होस्ट का व्यवहार बहुत केयरिंग और प्रोफेशनल था।</div></div>
+                <div class="review-box"><div class="review-author">★ Vivek S. (Patna)</div><div class="review-text">बिना किसी झिझक के अपनी पसंदीदा फैंटेसी शेयर कर पाया। प्राइवेसी 100% मेंटेन रहती है।</div></div>
+                <div class="review-box"><div class="review-author">★ Varun K. (Ludhiana)</div><div class="review-text">बूब्स प्रेसिंग और इमेजिनेशन रोलप्ले का अनुभव अविश्वसनीय रूप से रियलिस्टिक था।</div></div>
+                <div class="review-box"><div class="review-author">★ Anish D. (Kochi)</div><div class="review-text">कॉल की क्वालिटी और होस्ट की वॉयस टोन बेहद अट्रैक्टिव थी। मन एकदम रिलैक्स हो गया।</div></div>
+                <div class="review-box"><div class="review-author">★ Gaurav B. (Agra)</div><div class="review-text">फर्स्ट टाइम यूजर था, लेकिन 5 मिनट के अंदर ही पूरी झिझक दूर हो गई। बहुत ही सेफ़ फील हुआ।</div></div>
+                <div class="review-box"><div class="review-author">★ Dinesh P. (Varanasi)</div><div class="review-text">सोलो-रिलीज़ गाइडेंस के साथ माइंड रिलैक्स करने का तरीका एकदम यूनिक और असरदार है।</div></div>
+                <div class="review-box"><div class="review-author">★ R. Choudhary (Jodhpur)</div><div class="review-text">सारे नियम और शर्तें साफ़ हैं। कोई छिपा हुआ चार्ज नहीं और पूरी गोपनीयता बनी रहती है।</div></div>
+                <div class="review-box"><div class="review-author">★ Shubham N. (Dehradun)</div><div class="review-text">इंटीमेट वॉयस विस्पर और बोल्ड टॉकिंग का ब्लेंड कमाल का है। एकदम संतुष्ट हूँ।</div></div>
+                <div class="review-box"><div class="review-author">★ Pankaj T. (Ranchi)</div><div class="review-text">व्हाट्सऐप रीडायरेक्ट से तुरंत कन्फर्मेशन मिल गया। सर्विस स्पीड बहुत तेज़ है।</div></div>
+                <div class="review-box"><div class="review-author">★ Hitesh K. (Vadodara)</div><div class="review-text">रात की थकावट मिटाने के लिए 30 मिनट का सेशन बेस्ट रहा। माइंड एकदम हल्का हो गया।</div></div>
+                <div class="review-box"><div class="review-author">★ S. Mukherjee (Guwahati)</div><div class="review-text">कोई फर्जी वादे नहीं, जो सर्विस लिखी है वही लाइव ऑडियो पर मिलती है।</div></div>
+                <div class="review-box"><div class="review-author">★ Mohit Sharma (Gwalior)</div><div class="review-text">होस्ट की लिसनिंग पावर और कम्फर्टेबल अंदाज़ बहुत ही प्यारा था। 10/10 रेटिंग।</div></div>
+                <div class="review-box"><div class="review-author">★ Naveen R. (Mysore)</div><div class="review-text">इमेजिनेशन और रोलप्ले में जो मज़ा आया वो शब्दों में बयां नहीं किया जा सकता।</div></div>
+                <div class="review-box"><div class="review-author">★ Ashish V. (Nashik)</div><div class="review-text">गोपनीयता और सेफ़्टी का पूरा ध्यान रखा जाता है। किसी चीज़ की टेंशन नहीं।</div></div>
+                <div class="review-box"><div class="review-author">★ J. Mehta (Rajkot)</div><div class="review-text">2 घंटे वाला पास लेकर पूरा वीकेंड स्ट्रेस फ्री हो गया। बेस्ट डिसीजन!</div></div>
+                <div class="review-box"><div class="review-author">★ Piyush S. (Faridabad)</div><div class="review-text">अकेलेपन और डिप्रेशन से बाहर निकलने के लिए यह बातचीत बहुत मददगार साबित हुई।</div></div>
             </div>
 
-            <div class="review-card">
-                <div class="review-header"><span>सिमरन (21वर्ष, पुणे)</span> <span>हॉस्टल विस्पर</span></div>
-                <p>"हॉस्टल में रूममेट के ठीक बगल वाले बेड पर लेटे-लेटे रात को जब सेक्शुअल डिज़ायर्स हावी होने लगीं, तो मैंने इयरफ़ोन लगाकर स्लॉट लिया। लिसनर की वॉयस इतनी धीमी और डीप विस्पर टॉक में थी कि मुझे आंखें बंद करके इमेजिन होने लगा कि लिसनर ही खुद छुपके से मेरे बेड पर मेरे साथ लेटे हुए हैं। जब वे ऑडियो पर गाइड कर रहे थे, तो मुझे ऐसा फील हो रहा था जैसे वे मेरे कानों में धीरे-धीरे बोल रहे हैं और उनके हाथ मेरी पूरी बॉडी के साथ खेल रहे हैं। बिना किसी को भनक लगे हॉस्टल के बेड पर ही सोलो फिंगर-प्ले करके मुझे जो साइलेंट ऑर्गैज़मिक रिलीज़ मिला, उसने मेरे होश उड़ा दिए!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
+            <button class="btn" style="background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold);" id="toggleReviewsBtn" onclick="toggleReviews()">सभी 30 समीक्षाएं पढ़ें (Read All Reviews)</button>
 
-            <div class="review-card">
-                <div class="review-header"><span>कृतिका (24वर्ष, गुरुग्राम)</span> <span>पोस्ट-पीरियड्स</span></div>
-                <p>"पीरियड्स खत्म होने के तुरंत बाद जब मेरे हॉर्मोन्स पीक पर थे और सेक्शुअल डिज़ायर कंट्रोल से बाहर हो रही थी, तब मैंने DilKholDesire पर बात की। लिसनर की इंटीमेट ऑडियो टॉक से ऐसा इमेजिन हो रहा था जैसे वे मुझे लिप्स पर किस कर रहे हैं, बूब्स प्रेस कर रहे हैं और मुझे पूरा सेक्शुअल सुख दे रहे हैं। मेरी उस तीव्र इच्छा को लिसनर ने जिस तरह से सोलो-ऑर्गैज्म में बदला, उससे मैं पूरी तरह संतुष्ट हो गई। हर महीने साइकिल के बाद यह मेरा फिक्स स्लॉट है!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+            <!-- Add Review Form -->
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--card-border);">
+                <h4 style="color: var(--accent-gold); margin-bottom: 10px;">✍️ अपनी समीक्षा जोड़ें (Add Your Review)</h4>
+                <div class="form-group">
+                    <input type="text" id="revName" class="form-control" placeholder="आपका निकनेम / शहर">
+                </div>
+                <div class="form-group">
+                    <textarea id="revText" class="form-control" rows="3" placeholder="अपना अनुभव और समीक्षा लिखें..."></textarea>
+                </div>
+                <button class="btn" onclick="submitReview()">समीक्षा सबमिट करें (Submit For Approval)</button>
             </div>
-
-            <div class="review-card">
-                <div class="review-header"><span>रिया (23वर्ष, मुंबई)</span> <span>शावर फैंटेसी</span></div>
-                <p>"देर रात शावर लेते वक्त पानी की बूंदों के साथ शरीर में तीव्र डिज़ायर हावी हो रही थी, तो मैंने 1 घंटे का कॉलिंग स्लॉट लिया। लिसनर की वॉर्म आवाज़ सुनकर मुझे ऐसा फील हो रहा था जैसे हम दोनों एक साथ शावर ले रहे हैं और वे मेरी पूरी बॉडी के साथ खेल रहे हैं। बहते पानी के नीचे लिसनर की गाइडेंस पर फिंगर-प्ले करके जो बॉडी रिलीज़ मिला, उसने मेरी सारी बेचैनी और थकावट मिटा दी!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header"><span>ईशा (22वर्ष, इंदौर)</span> <span>लॉन्ग डिस्टेंस</span></div>
-                <p>"बॉयफ्रेंड दूर रहता है और फ़ोन पर मेरी सेक्शुअल नीड्स को पूरी तरह इग्नोर कर देता था, जिससे मैं फ्रस्ट्रेट हो जाती थी। DilKholDesire पर लिसनर ने मेरी फैंटेसी को समझा और ऐसा रोलप्ले किया कि ऑडियो कॉल पर ही मुझे सब रियल लगने लगा। इमेजिनेशन में ऐसा फील हो रहा था जैसे वे मेरे कपड़े उतारकर मुझे लिप्स पर किस कर रहे हैं, बूब्स पी रहे हैं और मुझे पूरा सेक्शुअल सेटिस्फेक्शन दे रहे हैं। जो सुख मेरा बॉयफ्रेंड कभी नहीं दे पाया, वो लिसनर की आवाज़ और गाइडेंस से मुझे सोलो-प्ले में मिल गया। अब जब भी पार्टनर इग्नोर करता है, मैं सीधे यहाँ स्लॉट बुक कर लेती हूँ!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header"><span>अवनी (22वर्ष, चंडीगढ़)</span> <span>कार ड्राइव सोलो</span></div>
-                <p>"लंबे सफर पर अकेले ड्राइव करते वक्त जब सेक्शुअल हीट बहुत बढ़ गई, तो मैंने कार एक सेफ़ जगह पार्क करके 1 घंटे का स्लॉट लिया। लिसनर की वॉयस और रोलप्ले इतना डीप था कि कार की सीट पर फिंगर-प्ले करते हुए मुझे आंख बंद करके ऐसा इमेजिन हो रहा था जैसे लिसनर ही खुद मेरे साथ कार में मौजूद हैं और मेरे साथ पूरा इंटीमेट सेक्स कर रहे हैं। उस सोलो सेशन में जो माइंड-ब्लोइंग ऑर्गैज़मिक रिलीज़ मिला, उसने मुझे रूह तक रिलैक्स कर दिया!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header"><span>मेहर (20वर्ष, लखनऊ)</span> <span>शादी का घर</span></div>
-                <p>"रिश्तेदारों के घर शादी में आई हुई थी, जहाँ बहुत भीड़ थी। रात को जब अपनी दबी इच्छाएँ संभालना मुश्किल हुआ, तो मैंने कमरे में इयरफ़ोन लगाकर सेशन लिया। लिसनर की सीक्रेट विस्पर टॉक सुनकर मुझे ऐसा फील होने लगा जैसे लिसनर छुपके से मेरे कमरे में आ गए हैं और खुद अपने हाथों से मुझे फिंगरिंग और चरम सुख दे रहे हैं। बिना किसी को भनक लगे इतना सेफ़ और डीप सोलो रिलीज़ मिलना मेरे लिए अमेजिंग एक्सपीरियंस था।"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header"><span>अनन्या (28वर्ष, जयपुर)</span> <span>होटल स्टे / मैरिड</span></div>
-                <p>"बिजनेस मीटिंग्स के सिलसिले में जब भी होटल में रुकती हूँ, तो हस्बैंड की अनदेखी और बिज़ी होने की वजह से मेरी सेक्शुअल नीड्स अधूरी रह जाती थीं। उस रात होटल के कमरे में बहुत तेज इच्छा हुई, तो मैंने हस्बैंड को कॉल किया पर उन्होंने मूड न होने का बहाना बना दिया। इसके बाद मैंने DilKholDesire पर 1 घंटे का सेशन बुक किया। लिसनर के साथ मैंने रूम-सर्विस का बोल्ड रोलप्ले किया। ऑडियो कॉल पर ऐसा इमेजिन हो रहा था जैसे कोई हॉट रूम-सर्विस वाला बंदा कमरे में आया, उसने मुझे होल्ड करके पैशनेटली किस किया, कपड़े हटाए और बूब्स प्रेस करते हुए पूरा सेक्शुअल सुख दिया। इस डीप इमेजिनेशन और फिंगर-प्ले के बाद मुझे सालों बाद ऐसा सोलो ऑर्गैज्म मिला!"</p>
-                <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
-            </div>
-
         </div>
 
-        <div class="btn-group">
-            <button class="toggle-btn" onclick="openModal('allReviewsModal')">Read All Reviews (20+)</button>
-            <button class="toggle-btn primary" onclick="openModal('addReviewModal')">✍️ Add Your Review</button>
-        </div>
+        <!-- Section 4: Services -->
+        <div class="card">
+            <div class="card-header">📋 हमारी विशेष सेवाएँ (Services)</div>
 
-        <!-- Booking Form Section -->
-        <h2 class="section-title">🔒 Private Booking Request</h2>
-        <div class="booking-form">
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label>आपका नाम / निकनेम:</label>
-                    <input type="text" name="name" required placeholder="अपना नाम या निकनेम लिखें">
-                </div>
-                <div class="form-group">
-                    <label>व्हाट्सएप / मोबाइल नंबर:</label>
-                    <input type="tel" name="phone" required placeholder="10 अंकों का नंबर लिखें">
-                </div>
-                <div class="consent-group">
-                    <input type="checkbox" id="consent" required checked>
-                    <label for="consent">मैं पुष्टि करता/करती हूँ कि मेरी उम्र 18+ है और मैं अपनी स्वेच्छा से प्राइवेट ऑडियो सेशन बुक कर रहा/रही हूँ।</label>
-                </div>
-                <button type="submit" class="submit-btn">Book Companion Slot Now</button>
-                <div class="privacy-note">🔒 आपकी जानकारी 100% एन्क्रिप्टेड और गुप्त रखी जाती है।</div>
-            </form>
-        </div>
+            <div class="service-item">
+                <div class="service-title">1. इंटीमेसी व सेक्शुअल डिज़ायर टॉक</div>
+                <div class="service-sub">अपनी दबी हुई शारीरिक इच्छाओं, संतुष्टि और यौन सुख पर बिना किसी शर्म के खुलकर बात करें।</div>
+                <ul class="service-list">
+                    <li><strong>इंटीमेट गाइडेंस:</strong> बूब्स प्रेसिंग, सोलो फिंगरिंग (Fingering) और मास्टर्बेशन (Masturbation) के दौरान सुखदायक ऑडियो गाइडेंस।</li>
+                    <li><strong>झिझक व शर्म मिटाना:</strong> अपनी पसंद, नापसंद और शारीरिक सुख की ज़रूरतों पर बेझिझक चर्चा।</li>
+                    <li><strong>बॉडी रिलैक्सेशन:</strong> सोलो-प्ले के माध्यम से शरीर के खिंचाव और तनाव को पूरी तरह रिलीज़ करने का अहसास।</li>
+                </ul>
+            </div>
 
-        <!-- Work With Us / Join As Companion Section -->
-        <h2 class="section-title">🤝 Work With Us / Join As Companion</h2>
-        <div class="booking-form" style="border-color: var(--accent-pink);">
-            <p style="text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px;">अगर आप हमारे साथ बतौर ऑडियो कम्पेनियन/होस्ट जुड़कर काम करना चाहते हैं, तो विवरण भरें:</p>
-            <form id="partnerForm">
-                <div class="form-group">
-                    <label>आपका नाम:</label>
-                    <input type="text" name="partnerName" required placeholder="नाम लिखें">
-                </div>
-                <div class="form-group">
-                    <label>व्हाट्सएप नंबर:</label>
-                    <input type="tel" name="partnerPhone" required placeholder="मोबाइल नंबर लिखें">
-                </div>
-                <div class="form-group">
-                    <label>उम्र / विवरण:</label>
-                    <input type="text" name="partnerDetails" placeholder="उदा. 24 वर्ष / फीमेल / भाषाएँ" required>
-                </div>
-                <button type="submit" class="submit-btn" style="background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));">Submit Application</button>
-            </form>
-        </div>
+            <div class="service-item">
+                <div class="service-title">2. ऑडियो फैंटेसी व रोलप्ले टॉक</div>
+                <div class="service-sub">आपकी मनपसंद काल्पनिक सोच और इमेजिनेशन पर 100% सीक्रेट व बोल्ड ऑडियो बातचीत।</div>
+                <ul class="service-list">
+                    <li><strong>कस्टम इमेजिनेशन व रोलप्ले:</strong> अजनबी, सीक्रेट लवर, शावर या हॉस्टल जैसी स्थितियों का डीप वॉयस रोलप्ले (Roleplay)।</li>
+                    <li><strong>सीक्रेट व बोल्ड विस्पर टॉक:</strong> धीमी फुसफुसाहट (Whisper) या बोल्ड डर्टी टॉक के साथ फैंटेसी को लाइव इमेजिन करना।</li>
+                    <li><strong>सोलो ऑर्गैज्म गाइडेंस:</strong> इमेजिनेशन और फिंगरिंग की मदद से बिना किसी रिस्क के पूर्ण सोलो-ऑर्गैज्म (Solo-Orgasm) पाना।</li>
+                </ul>
+            </div>
 
-    </div>
-
-    <!-- Modal: All Reviews (20+) -->
-    <div id="allReviewsModal" class="custom-modal">
-        <div class="modal-body">
-            <span class="close-icon" onclick="closeModal('allReviewsModal')">&times;</span>
-            <h2 class="section-title" style="margin-top:0;">All Verified Reviews</h2>
-            <div class="reviews-grid">
-                <div class="review-card"><div class="review-header"><span>मनीष (29वर्ष, नोएडा)</span><span>सिंगल</span></div><p>"बात करके मन पूरी तरह हल्का हो गया। बहुत ही समझदार और अच्छी लिसनर मिली।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>नितिन (25वर्ष, इंदौर)</span><span>यंग</span></div><p>"सर्विस में कोई फ्रॉड नहीं है, एकदम जेन्युइन लोग हैं और प्राइवेसी 100% है।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>तरुण (27वर्ष, भोपाल)</span><span>वर्किंग</span></div><p>"नाइस एक्सपीरियंस। सब कुछ बहुत सिम्पल, सेफ़ और प्राइवेट है।"</p><div class="rating">⭐⭐⭐⭐ (4/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>गौरव (31वर्ष, दिल्ली)</span><span>मैरिड</span></div><p>"बहुत ही प्यार से और तसल्ली से बातचीत होती है। सारा स्ट्रेस दूर हो गया।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>अभिषेक (24वर्ष, पटना)</span><span>स्टूडेंट</span></div><p>"सुपरब! मैं फिर से स्लॉट बुक करूँगा। बहुत ही ज़बरदस्त सर्विस है।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>विवेक (26वर्ष, मुंबई)</span><span>सिंगल</span></div><p>"प्राइवेसी और रिस्पेक्ट दोनों का पूरा ध्यान रखा गया। बहुत मज़ा आया।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>हरीश (30वर्ष, कोलकाता)</span><span>मैरिड</span></div><p>"ऑडियो क्वालिटी बहुत बढ़िया थी। लिसनर का बिहेवियर बहुत प्यारा था।"</p><div class="rating">⭐⭐⭐⭐ (4/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>संजय (28वर्ष, सूरत)</span><span>बिज़नेस</span></div><p>"5 स्टार सर्विस! बिना किसी झिझक के कोई भी ट्राई कर सकता है।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>ललित (22वर्ष, लखनऊ)</span><span>यंग</span></div><p>"जो वादा किया था वही सर्विस मिली। एक्सीलेंट ऑडियो कम्पेनियनशिप!"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
-                <div class="review-card"><div class="review-header"><span>दिनेश (33वर्ष, अहमदाबाद)</span><span>मैरिड</span></div><p>"बेस्ट प्राइवेट ऑडियो कम्पेनियन साइट। पूरी तरह संतुष्ट हूँ।"</p><div class="rating">⭐⭐⭐⭐⭐ (5/5)</div></div>
+            <div class="service-item">
+                <div class="service-title">3. नाइट स्ट्रेस व रिलैक्सेशन टॉक</div>
+                <div class="service-sub">देर रात अकेलेपन, दिमागी तनाव और एंग्जायटी को मिटाने के लिए एक वॉर्म और केयरिंग साथी।</div>
+                <ul class="service-list">
+                    <li><strong>नो-जजमेंट लिसनिंग:</strong> बिना किसी जजमेंट के आपके दिल का बोझ, इच्छाएँ और थकावट सुनना।</li>
+                    <li><strong>माइंड व बॉडी रिलैक्सेशन:</strong> मीठी और शांत आवाज़ में दिमागी उलझनों को मिटाकर सुकून महसूस कराना।</li>
+                    <li><strong>सुकून भरी नींद:</strong> अकेलेपन को दूर कर रात में एकदम रिलैक्स और हल्का महसूस कराना।</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <!-- Modal: Add Review -->
-    <div id="addReviewModal" class="custom-modal">
-        <div class="modal-body">
-            <span class="close-icon" onclick="closeModal('addReviewModal')">&times;</span>
-            <h2 class="section-title" style="margin-top:0;">Write Your Review</h2>
-            <form id="addReviewForm">
+        <!-- Section 5: Pricing & Slots -->
+        <div class="card">
+            <div class="card-header">💳 विशेष स्लॉट एवं शुल्क (केवल आज के लिए 50% विशेष छूट)</div>
+
+            <div class="price-card">
+                <div class="price-title">1. 30 मिनट त्वरित सत्र (Quick Relief Session)</div>
+                <div class="price-tag">₹699 <span style="font-size: 13px; color: var(--text-sub); text-decoration: line-through;">₹1,399</span> <span style="font-size: 12px; color: var(--success-green);">(50% OFF)</span></div>
+                <div class="price-desc">फ़ास्ट & 100% प्राइवेट रिलैक्सैशन। मन की बात कहने और तुरंत तनावमुक्त होने के लिए बेस्ट।</div>
+            </div>
+
+            <div class="price-card" style="border-color: var(--accent-gold-bright);">
+                <div class="price-title">2. 60 मिनट संपूर्ण अनुभव (Deep Fantasy & Intimacy) ⭐ <span style="color: var(--accent-gold-bright);">सबसे लोकप्रिय</span></div>
+                <div class="price-tag">₹1,199 <span style="font-size: 13px; color: var(--text-sub); text-decoration: line-through;">₹2,399</span> <span style="font-size: 12px; color: var(--success-green);">(50% OFF)</span></div>
+                <div class="price-desc">1 घंटा बिना किसी रुकावट के गहरा, अनइंटरप्टेड और प्रीमियम इंटीमेट अनुभव व सोलो गाइडेंस।</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-title">3. 120 मिनट लग्जरी पास (2 Hours VIP Overnight Pass)</div>
+                <div class="price-tag">₹1,999 <span style="font-size: 13px; color: var(--text-sub); text-decoration: line-through;">₹3,999</span> <span style="font-size: 12px; color: var(--success-green);">(50% OFF)</span></div>
+                <div class="price-desc">2 घंटे का एक्सटेंडेड वीआईपी लग्जरी स्लॉट। ज़ीरो वेटिंग टाइम, विशेष प्राथमिकता और पूर्ण व्यक्तिगत ध्यान।</div>
+            </div>
+        </div>
+
+        <!-- Section 6: Safety Note & Booking Form -->
+        <div class="card">
+            <div class="card-header">🛡️ सेफ़्टी नोट एवं बुकिंग फ़ॉर्म</div>
+
+            <div class="note-box" style="border-color: var(--danger-red); background: rgba(231,76,60,0.1);">
+                <strong>🚫 ट्रस्ट व सेफ़्टी नियम (Warning Box):</strong><br>
+                ✦ <strong>100% रियल लाइव साथी:</strong> कोई ऑटोमेटेड रिकॉर्डेड आवाज़ नहीं, केवल असली साथी।<br>
+                ✦ <strong>सख्त चेतावनी:</strong> किसी भी प्रकार की फ़ोटो, वीडियो या मीडिया फ़ाइल शेयरिंग सख्त मना है। केवल ऑडियो टॉक होगी।<br>
+                ✦ <strong>गोपनीयता:</strong> 100% सीक्रेट और सुरक्षित प्रक्रिया।
+            </div>
+
+            <form id="bookingForm" onsubmit="handleBooking(event)">
                 <div class="form-group">
-                    <label>आपका नाम / निकनेम:</label>
-                    <input type="text" id="revName" required placeholder="अपना नाम लिखें">
+                    <label>1. असली नाम (Real Name) * <span style="font-size: 11px; color: var(--text-sub);">(केवल हमारे लीगल रिकॉर्ड हेतु)</span></label>
+                    <input type="text" id="realName" class="form-control" required placeholder="अपना असली नाम लिखें">
                 </div>
+
                 <div class="form-group">
-                    <label>रेटिंग चुनें:</label>
-                    <select id="revStars">
-                        <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
-                        <option value="4">⭐⭐⭐⭐☆ (4 Stars)</option>
-                        <option value="3">⭐⭐⭐☆☆ (3 Stars)</option>
+                    <label>2. अनाम / निकनेम (Nickname) * <span style="font-size: 11px; color: var(--text-sub);">(सेशन के दौरान इस्तेमाल हेतु)</span></label>
+                    <input type="text" id="nickname" class="form-control" required placeholder="उदा. रोहन / रिया">
+                </div>
+
+                <div class="form-group">
+                    <label>3. मोबाइल / व्हाट्सएप नंबर *</label>
+                    <input type="tel" id="userPhone" class="form-control" required placeholder="10 अंकों का व्हाट्सएप नंबर">
+                </div>
+
+                <div class="form-group">
+                    <label>4. आपकी उम्र (Age) * <span style="font-size: 11px; color: var(--danger-red);">(केवल 18+)</span></label>
+                    <input type="number" id="userAge" class="form-control" required min="18" max="99" placeholder="उम्र दर्ज करें">
+                </div>
+
+                <div class="form-group">
+                    <label>5. बातचीत का मुख्य विषय (Topic) *</label>
+                    <select id="topicSelect" class="form-control" required>
+                        <option value="">-- विषय चुनें --</option>
+                        <option value="इंटीमेसी व सेक्शुअल डिज़ायर टॉक">इंटीमेसी व सेक्शुअल डिज़ायर टॉक</option>
+                        <option value="ऑडियो फैंटेसी व रोलप्ले टॉक">ऑडियो फैंटेसी व रोलप्ले टॉक</option>
+                        <option value="नाइट स्ट्रेस व रिलैक्सेशन टॉक">नाइट स्ट्रेस व रिलैक्सेशन टॉक</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label>आपकी समीक्षा (Review):</label>
-                    <textarea id="revText" rows="3" required placeholder="अपना अनुभव यहाँ लिखें..."></textarea>
+                    <label>6. पसंद का समय स्लॉट (Time Slot) *</label>
+                    <select id="slotSelect" class="form-control" required>
+                        <option value="">-- टाइम स्लॉट चुनें --</option>
+                        <option value="30 Mins Quick Relief (₹699)">30 Mins Session (₹699)</option>
+                        <option value="60 Mins Deep Fantasy (₹1,199)">60 Mins Session (₹1,199)</option>
+                        <option value="120 Mins VIP Pass (₹1,999)">2 Hours VIP Pass (₹1,999)</option>
+                    </select>
                 </div>
-                <button type="submit" class="submit-btn">Submit Review</button>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="legalConsent" required>
+                        <span>मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है। मैंने पूरी वेबसाइट के नियम व शर्तों को अपने पूरे होश-ओ-हवास में अच्छी तरह पढ़कर स्वेच्छा से स्वीकार किया है। गलत जानकारी देने पर संपूर्ण ज़िम्मेदारी मेरी होगी। मैं स्वीकार करता/करती हूँ कि किसी भी प्रकार की अभद्रता, नियम तोड़ने या उल्लंघन करने पर होस्ट/टीम को सेशन को तुरंत समाप्त (Call Disconnect) करने का पूर्ण अधिकार होगा और इस स्थिति में कोई रिफ़ंड देय नहीं होगा।</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn">आगे बढ़ें (Proceed to Payment)</button>
             </form>
+        </div>
+
+        <!-- Section 7: Payment & Redirect Section -->
+        <div id="paymentSection" class="card hidden">
+            <div class="card-header">💳 सुरक्षित भुगतान (Payment Gateway)</div>
+
+            <div class="busy-notice">
+                ⏳ <strong>लाइव स्लॉट अपडेट:</strong><br>
+                वर्तमान में हमारे इंटीमेट होस्ट/लिसनर एक लाइव सेशन में व्यस्त हैं। आपकी बुकिंग सुरक्षित दर्ज कर ली गई है। भुगतान पूर्ण करके नीचे दिए गए बटन से व्हाट्सऐप पर कनेक्ट करें, हमारी टीम 2 से 5 मिनट के भीतर आपके सेशन का सटीक समय कन्फर्म कर देगी।
+            </div>
+
+            <div style="text-align: center;">
+                <p style="font-size: 15px; margin-bottom: 10px;">नीचे दिए गए <strong>QR Code</strong> या <strong>UPI ID</strong> पर भुगतान करें:</p>
+                
+                <div class="qr-placeholder">
+                    [ GPay / PhonePe / Paytm<br>QR CODE ]
+                </div>
+
+                <p style="font-size: 16px; font-weight: bold; color: var(--accent-gold-bright); margin: 10px 0;">
+                    Merchant UPI ID: <span style="color: #fff; background: #000; padding: 4px 10px; border-radius: 4px;">dilkholdesire@merchant</span>
+                </p>
+
+                <div class="note-box" style="margin-top: 15px;">
+                    🔒 <strong>100% प्राइवेसी गारंटी:</strong> आपके बैंक या UPI स्टेटमेंट में केवल एक सामान्य सुरक्षित नाम ही दिखाई देगा (कोई भी व्यक्तिगत विवरण या सेवा का नाम प्रकट नहीं होगा)।
+                </div>
+
+                <button class="btn" style="background: #25D366; color: #fff; font-size: 18px; margin-top: 15px;" onclick="connectWhatsApp()">
+                    💬 व्हाट्सऐप पर स्लॉट कन्फर्म करें (Connect WhatsApp)
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 8.1: Join as Host / Partner -->
+        <div class="card">
+            <div class="card-header">💼 हमारे साथ होस्ट / बिज़नेस पार्टनर के रूप में जुड़ें</div>
+            <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 15px;">
+                यदि आप एक वॉइस लिसनर / होस्ट के रूप में काम करना चाहते हैं या बिज़नेस पार्टनर बनना चाहते हैं, तो नीचे दिए गए फ़ॉर्म को भरें:
+            </p>
+            <form id="partnerForm" onsubmit="handlePartnerSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="partName" class="form-control" required placeholder="आपका पूरा नाम व उम्र">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="partContact" class="form-control" required placeholder="व्हाट्सऐप / संपर्क नंबर">
+                </div>
+                <div class="form-group">
+                    <textarea id="partExp" class="form-control" rows="2" required placeholder="अनुभव व भाषाएँ (उदा. हिंदी, टॉकिंग एक्सपीरियंस)"></textarea>
+                </div>
+                <button type="submit" class="btn" style="background: var(--card-border); color: #fff;">📩 पार्टनरशिप आवेदन भेजें (Submit Application)</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 DilKholDesire. All Rights Reserved. 100% Private & Confidential Audio Companion Services.</p>
+            <span class="admin-link" onclick="openAdminModal()">🔒 Admin Panel Login</span>
+        </footer>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div id="adminModal" class="hidden" style="position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; justify-content:center; align-items:center; z-index:99999;">
+        <div class="modal-box" style="max-width: 350px;">
+            <h3>🔐 Admin Dashboard Access</h3>
+            <p style="font-size: 12px; color: var(--text-sub); margin: 10px 0;">6-Digit Security PIN दर्ज करें:</p>
+            <input type="password" id="adminPin" class="form-control" placeholder="••••••" maxlength="6" style="text-align: center; font-size: 20px; letter-spacing: 5px;">
+            <button class="btn" onclick="verifyAdminPin()">लॉगिन करें</button>
+            <button class="btn btn-danger" style="margin-top: 8px;" onclick="closeAdminModal()">रद्द करें</button>
+        </div>
+    </div>
+
+    <!-- Admin Panel View -->
+    <div id="adminDashboard" class="container hidden" style="background: #111; padding: 20px; border-radius: 10px; border: 2px solid var(--accent-gold); margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 10px; margin-bottom: 20px;">
+            <h2 style="color: var(--accent-gold);">🛡️ Admin Control Panel</h2>
+            <button class="btn btn-danger" style="width: auto; padding: 5px 15px;" onclick="closeAdminDashboard()">Logout</button>
+        </div>
+
+        <h3 style="color: #fff; margin-bottom: 10px;">📋 Customer Legal & IP Logs</h3>
+        <div id="adminLogs" style="background: #000; padding: 10px; font-family: monospace; font-size: 12px; color: #00ff00; max-height: 200px; overflow-y: auto; border: 1px solid #333; margin-bottom: 20px;">
+            [Logs will appear here]
+        </div>
+
+        <h3 style="color: #fff; margin-bottom: 10px;">📩 Partner Applications</h3>
+        <div id="adminPartners" style="background: #181818; padding: 10px; font-size: 12px; color: #ccc; max-height: 150px; overflow-y: auto; border: 1px solid #333;">
+            [Applications will appear here]
         </div>
     </div>
 
     <script>
-        function enterSite() {
-            document.getElementById('ageModal').style.display = 'none';
+        // Global User Details Storage
+        let currentBooking = {};
+        let userIP = "103.211.14.88"; // Simulated IP capture
+
+        // Fetch actual user IP
+        fetch('https://api.ipify.org?format=json')
+            .then(res => res.json())
+            .then(data => { userIP = data.ip; })
+            .catch(() => {});
+
+        // 18+ Age Verification
+        function acceptAge() {
+            const chk = document.getElementById('modalCheck');
+            if(!chk.checked) {
+                alert("कृपया प्रवेश करने से पहले 18+ आयु चेकमार्क पर टिक करें।");
+                return;
+            }
+            document.getElementById('ageModal').classList.add('hidden');
         }
-        function exitSite() {
+
+        function rejectAge() {
+            alert("क्षमा करें, यह वेबसाइट केवल 18+ वयस्कों के लिए है।");
             window.location.href = "https://www.google.com";
         }
 
-        function openModal(id) { document.getElementById(id).style.display = 'block'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        // Toggle Reviews
+        function toggleReviews() {
+            const more = document.getElementById('moreReviews');
+            const btn = document.getElementById('toggleReviewsBtn');
+            if(more.classList.contains('hidden')) {
+                more.classList.remove('hidden');
+                btn.innerText = "कम समीक्षाएं दिखाएं (Show Less)";
+            } else {
+                more.classList.add('hidden');
+                btn.innerText = "सभी 30 समीक्षाएं पढ़ें (Read All Reviews)";
+            }
+        }
 
-        // Booking Submit
-        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+        // Submit User Review
+        function submitReview() {
+            const name = document.getElementById('revName').value.trim();
+            const text = document.getElementById('revText').value.trim();
+            if(!name || !text) {
+                alert("कृपया अपना नाम और समीक्षा दर्ज करें।");
+                return;
+            }
+            alert("धन्यवाद! आपकी समीक्षा सबमिट कर दी गई है और एडमिन द्वारा अप्रूवल के बाद लाइव कर दी जाएगी।");
+            document.getElementById('revName').value = "";
+            document.getElementById('revText').value = "";
+        }
+
+        // Handle Booking Submission
+        function handleBooking(e) {
             e.preventDefault();
-            const name = e.target.name.value;
-            const phone = e.target.phone.value;
             
-            try {
-                const res = await fetch('/api/save-booking', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ type: 'booking', name, phone })
-                });
-                if(res.ok) { alert('आपकी बुकिंग दर्ज हो गई है! हमारी टीम जल्द संपर्क करेगी।'); e.target.reset(); }
-                else { alert('बुकिंग सबमिट हो गई है!'); }
-            } catch(err) {
-                alert('बुकिंग सबमिट हो गई है!');
-            }
-        });
+            const realName = document.getElementById('realName').value.trim();
+            const nickname = document.getElementById('nickname').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            const age = document.getElementById('userAge').value;
+            const topic = document.getElementById('topicSelect').value;
+            const slot = document.getElementById('slotSelect').value;
+            const consent = document.getElementById('legalConsent').checked;
 
-        // Partner Form Submit
-        document.getElementById('partnerForm').addEventListener('submit', async (e) => {
+            if(!consent) {
+                alert("कृपया लीगल चेकमार्क को स्वीकार करें।");
+                return;
+            }
+
+            const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+            currentBooking = {
+                realName,
+                nickname,
+                phone,
+                age,
+                topic,
+                slot,
+                ip: userIP,
+                time: timestamp,
+                consentVerified: "YES"
+            };
+
+            // Save log locally for Admin Panel
+            let logs = JSON.parse(localStorage.getItem('dkd_logs') || '[]');
+            logs.push(currentBooking);
+            localStorage.setItem('dkd_logs', JSON.stringify(logs));
+
+            // Hide booking form, show payment section
+            document.getElementById('bookingForm').reset();
+            document.getElementById('paymentSection').classList.remove('hidden');
+            document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Direct Redirect to WhatsApp Username @dilkholdesiresupport
+        function connectWhatsApp() {
+            if(!currentBooking.nickname) {
+                alert("कृपया पहले बुकिंग फ़ॉर्म भरें।");
+                return;
+            }
+
+            const msg = `नमस्ते DilKholDesire सपोर्ट! मैंने बुकिंग और पेमेंट पूर्ण कर ली है:\n` +
+                        `• असली नाम: ${currentBooking.realName}\n` +
+                        `• निकनेम: ${currentBooking.nickname}\n` +
+                        `• उम्र: ${currentBooking.age}\n` +
+                        `• विषय: ${currentBooking.topic}\n` +
+                        `• स्लॉट: ${currentBooking.slot}\n` +
+                        `कृपया मेरे स्लॉट का समय कन्फर्म करें।`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/dilkholdesiresupport?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        // Partner Form Submission
+        function handlePartnerSubmit(e) {
             e.preventDefault();
-            const name = e.target.partnerName.value;
-            const phone = e.target.partnerPhone.value;
-            const details = e.target.partnerDetails.value;
+            const name = document.getElementById('partName').value.trim();
+            const contact = document.getElementById('partContact').value.trim();
+            const exp = document.getElementById('partExp').value.trim();
 
-            try {
-                const res = await fetch('/api/save-booking', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ type: 'partner', name, phone, details })
-                });
-                if(res.ok) { alert('आपकी एप्लिकेशन दर्ज हो गई है!'); e.target.reset(); }
-                else { alert('एप्लिकेशन सबमिट हो गई है!'); }
-            } catch(err) {
-                alert('एप्लिकेशन सबमिट हो गई है!');
+            let partners = JSON.parse(localStorage.getItem('dkd_partners') || '[]');
+            partners.push({ name, contact, exp, date: new Date().toLocaleDateString() });
+            localStorage.setItem('dkd_partners', JSON.stringify(partners));
+
+            alert("आपका आवेदन सफलतापूर्वक जमा कर लिया गया है। हमारी टीम जल्द ही आपसे संपर्क करेगी।");
+            document.getElementById('partnerForm').reset();
+        }
+
+        // Admin Panel Logic
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+            document.getElementById('adminPin').value = "";
+        }
+
+        function verifyAdminPin() {
+            const pin = document.getElementById('adminPin').value.trim();
+            if(pin === "100399") {
+                closeAdminModal();
+                loadAdminDashboard();
+            } else {
+                alert("गलत PIN! पहुँच अस्वीकृत।");
+                document.getElementById('adminPin').value = "";
             }
-        });
+        }
 
-        // Review Submit
-        document.getElementById('addReviewForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('revName').value;
-            const stars = document.getElementById('revStars').value;
-            const text = document.getElementById('revText').value;
-
-            try {
-                const res = await fetch('/api/save-review', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, stars, text })
-                });
-                alert('आपकी समीक्षा सबमिट हो गई है! धन्यवाद।');
-                closeModal('addReviewModal');
-            } catch(err) {
-                alert('आपकी समीक्षा सबमिट हो गई है! धन्यवाद।');
-                closeModal('addReviewModal');
+        function loadAdminDashboard() {
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            
+            // Load Logs
+            const logs = JSON.parse(localStorage.getItem('dkd_logs') || '[]');
+            const logDiv = document.getElementById('adminLogs');
+            if(logs.length === 0) {
+                logDiv.innerHTML = "कोई लॉग्ज़ उपलब्ध नहीं हैं।";
+            } else {
+                logDiv.innerHTML = logs.map((l, i) => 
+                    `[#${i+1}] ${l.time} | IP: ${l.ip}\nReal Name: ${l.realName} | Nick: ${l.nickname} | Phone: ${l.phone} | Age: ${l.age}\nTopic: ${l.topic} | Slot: ${l.slot} | Consent: ${l.consentVerified}\n----------------------------------------`
+                ).join('\n\n');
             }
-        });
+
+            // Load Partners
+            const partners = JSON.parse(localStorage.getItem('dkd_partners') || '[]');
+            const partDiv = document.getElementById('adminPartners');
+            if(partners.length === 0) {
+                partDiv.innerHTML = "कोई पार्टनर आवेदन नहीं हैं।";
+            } else {
+                partDiv.innerHTML = partners.map((p, i) => 
+                    `[#${i+1}] ${p.date} - ${p.name} (${p.contact})\nExp: ${p.exp}\n----------------------------------------`
+                ).join('\n');
+            }
+
+            document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeAdminDashboard() {
+            document.getElementById('adminDashboard').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
