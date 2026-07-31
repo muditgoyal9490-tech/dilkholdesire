@@ -93,7 +93,7 @@
             color: #ff8a8a;
         }
 
-        /* Header & Logo */
+        /* Header & Logo Container */
         header {
             text-align: center;
             padding: 25px 10px;
@@ -101,21 +101,21 @@
             margin-bottom: 20px;
         }
 
-        .logo-container {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
+        .logo-box {
+            width: 130px;
+            height: 130px;
             margin: 0 auto 15px;
+            border-radius: 50%;
             border: 3px solid var(--neon-pink);
-            box-shadow: 0 0 25px rgba(255, 42, 133, 0.5);
-            overflow: hidden;
+            box-shadow: 0 0 25px rgba(255, 42, 133, 0.6);
             background: #0f0817;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        .logo-container img {
+        .logo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -155,25 +155,59 @@
             font-weight: bold;
         }
 
-        /* Reviews */
-        .review-box {
+        /* Reviews Grid & Cards */
+        .reviews-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-card {
             background: #120721;
-            border-left: 3px solid var(--neon-pink);
+            border-left: 4px solid var(--neon-pink);
             padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
+            border: 1px solid var(--border-purple);
         }
 
-        .review-author {
-            color: var(--accent-purple);
+        .review-header {
+            display: flex;
+            justify-content: space-between;
             font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 5px;
+            color: var(--accent-purple);
+            margin-bottom: 8px;
+            font-size: 14.5px;
         }
 
-        .review-text {
+        .review-card p {
             font-size: 13.5px;
             color: #e0d0f5;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: var(--accent-purple);
+            color: #fff;
         }
 
         .note-box {
@@ -311,7 +345,8 @@
         #busyPopupModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(5px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -347,7 +382,7 @@
         <div class="modal-box">
             <h2>🔞 18+ आयु पुष्टि एवं लीगल डिस्क्लेमर</h2>
             <p style="font-size: 13.5px; color: #d1c4e9; text-align: left; margin-bottom: 15px;">
-                यह वेबसाइट केवल 18 वर्ष या उससे अधिक आयु के वयस्कों के लिए है। इसमें केवल 100% सीक्रेट वॉयस टॉकिंग, काउंसलिंग, ऑडियो फैंटेसी रोलप्ले और स्ट्रेस रिलैक्सैशन सर्विसेज दी जाती हैं। किसी भी प्रकार की मीडिया शेयरिंग, फोटो, या वीडियो कॉल सख्त मना है।
+                यह वेबसाइट केवल 18 वर्ष या उससे अधिक आयु के वयस्कों के लिए है। इसमें केवल 100% सीक्रेट वॉयस टॉकिंग, काउंसलिंग, ऑडियो फैंटेसी रोलप्ले और स्ट्रेस रिलैक्सेशन सर्विसेज दी जाती हैं। किसी भी प्रकार की मीडिया शेयरिंग, फोटो, या वीडियो कॉल सख्त मना है।
             </p>
             <div style="text-align: left; margin-bottom: 15px;">
                 <label class="checkbox-label">
@@ -360,7 +395,7 @@
         </div>
     </div>
 
-    <!-- Live Slot Busy Popup Modal (Appears ON CLICKING WhatsApp Button) -->
+    <!-- Live Slot Busy Popup Modal -->
     <div id="busyPopupModal" class="hidden">
         <div class="modal-box" style="border-color: var(--gold);">
             <h3 style="color: var(--gold); margin-bottom: 10px;">⏳ बुकिंग दर्ज कर ली गई है!</h3>
@@ -374,62 +409,212 @@
     </div>
 
     <div class="container">
-        <!-- Header with Image Logo -->
+        <!-- Header with Google Drive Direct Logo -->
         <header>
-            <div class="logo-container">
-                <img src="logo.png" alt="DilKholDesire Logo" onerror="this.style.display='none'; this.parentNode.innerText='DKD'; this.parentNode.style.fontSize='32px'; this.parentNode.style.fontWeight='bold'; this.parentNode.style.color='#ff2a85';">
+            <div class="logo-box">
+                <img src="https://lh3.googleusercontent.com/d/1rq9AC71rUD3LFh1BevwyPDwJ9Exdvj0z" alt="DilKholDesire Logo">
             </div>
             <h1>DilKholDesire</h1>
             <p>100% सीक्रेट, सेफ़ एवं अनसेंसर्ड पर्सनल ऑडियो टॉकिंग व रिलैक्सेशन</p>
         </header>
 
-        <!-- Section 3: Verified Reviews (Female Reviews) -->
+        <!-- Section 3: Verified Uncut Customer Reviews -->
         <div class="card">
-            <div class="card-header">💬 सत्यापित ग्राहक समीक्षाएं (Verified Customer Reviews)</div>
+            <h2 class="card-header">Verified Customer Reviews</h2>
             
             <div class="note-box">
-                🔒 <strong>गोपनीयता एवं स्वेच्छा नोट:</strong> यहाँ दिखाई गई सभी समीक्षाएं हमारे ग्राहकों ने अपनी संतुष्टि, व्यक्तिगत अनुभव और भावनाओं को महसूस करके स्वयं अपनी इच्छा से लिखी हैं। हमारी सेवा की गुणवत्ता और 100% गोपनीयता ही ग्राहकों का यह भरोसा बनाती है। <strong>यदि आपको भी हमारी सेवा से अद्भुत अनुभव और सुकून मिले, तो आप भी 'अपनी समीक्षा जोड़ें' (Add Review) पर जाकर अपना अनुभव बेझिझक साझा कर सकते हैं।</strong>
+                🔒 <strong>गोपनीयता एवं स्वेच्छा नोट:</strong> यहाँ दिखाई गई सभी समीक्षाएं हमारे ग्राहकों ने अपनी संतुष्टि, व्यक्तिगत अनुभव और भावनाओं को महसूस करके स्वयं अपनी इच्छा से लिखी हैं।
             </div>
 
-            <div id="reviewsContainer">
-                <!-- 10 Main Reviews -->
-                <div class="review-box"><div class="review-author">★ Neha S. (Delhi) - Verified Customer</div><div class="review-text">एक फीमेल होने के नाते मुझे प्राइवेसी की बहुत चिंता थी। लेकिन यहाँ बातचीत का माहौल इतना सुरक्षित, फ्रेंडली और रिस्पेक्टफुल था कि मेरी सारी झिझक खत्म हो गई। बहुत सुकून मिला!</div></div>
-                <div class="review-box"><div class="review-author">★ Ananya M. (Mumbai) - Verified Customer</div><div class="review-text">रात के समय जब तनाव और अकेलापन हावी होता था, तब समझ नहीं आता था किससे बात करूँ। 60 मिनट का सेशन लिया, होस्ट ने बिना किसी जजमेंट के मेरी पूरी बात सुनी और माइंड रिलैक्स कर दिया।</div></div>
-                <div class="review-box"><div class="review-author">★ Sneha K. (Bangalore) - Verified Customer</div><div class="review-text">ऑडियो फैंटेसी और सोलो गाइडेंस का अनुभव बेहद खूबसूरत था। आवाज़ की टोन और कम्फर्ट लेवल इतना अच्छा था कि सारा दिमागी बोझ मिट गया। 100% सीक्रेट सर्विस!</div></div>
-                <div class="review-box"><div class="review-author">★ Pooja Sharma (Jaipur) - Verified Customer</div><div class="review-text">पेमेंट से पहले थोड़ा डर लग रहा था, लेकिन बैंक स्टेटमेंट में बिल्कुल नॉर्मल नाम आया। प्राइवेसी का पूरा ध्यान रखा गया। बहुत ही प्रोफेशनल और वार्म टॉक रही।</div></div>
-                <div class="review-box"><div class="review-author">★ Ritu P. (Pune) - Verified Customer</div><div class="review-text">इंटीमेसी और अपनी पर्सनल इच्छाओं पर बिना किसी शर्म के बात करने का मौका मिला। होस्ट ने बहुत अच्छे से गाइड किया और आत्मविश्वास बढ़ाया।</div></div>
-                <div class="review-box"><div class="review-author">★ Divya R. (Chandigarh) - Verified Customer</div><div class="review-text">2 घंटे वाला VIP पास लिया था। बिल्कुल ज़ीरो वेटिंग टाइम मिला और पर्सनल अटेंशन कमाल का था। नाइटनेस स्ट्रेस के लिए यह सर्विस वरदान जैसी है।</div></div>
-                <div class="review-box"><div class="review-author">★ Megha V. (Kolkata) - Verified Customer</div><div class="review-text">कोई बॉट या रिकॉर्डिंग नहीं, 100% असली इंसान से बात हुई। वॉयस क्वालिटी और रिस्पेक्टफुल एटीट्यूड की वजह से 10/10 रेटिंग देना चाहूँगी।</div></div>
-                <div class="review-box"><div class="review-author">★ Kavita Das (Lucknow) - Verified Customer</div><div class="review-text">अपनी रिलेशनशिप स्ट्रेस और पर्सनल लाइफ पर खुलकर चर्चा कर पाई। दिल का सारा बोझ हल्का हो गया। बहुत ही केयरिंग लिसनर हैं।</div></div>
-                <div class="review-box"><div class="review-author">★ Simran B. (Indore) - Verified Customer</div><div class="review-text">30 मिनट के क्विक सेशन से ही मुझे बहुत रिलैक्सेशन मिला। एंग्जायटी दूर करने और सुकून की नींद पाने के लिए यह बेस्ट है।</div></div>
-                <div class="review-box"><div class="review-author">★ Tanvi Gupta (Ahmedabad) - Verified Customer</div><div class="review-text">50% डिस्काउंट ऑफर बहुत ही बढ़िया है। ₹1199 में 1 घंटा बिना किसी रुकावट के बेहतरीन ऑडियो गाइडेंस और कम्फर्ट मिला।</div></div>
+            <!-- Top 10 Full Uncut Hero Reviews -->
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header"><span>रिचा (28वर्ष, दिल्ली)</span> <span>मैरिड</span></div>
+                    <p>"शादी के बाद हस्बैंड के ध्यान न देने से मेरी इंटीमेट लाइफ पूरी तरह खत्म हो चुकी थी। कई बार दिमाग में आता था कि बाहर जाकर अपनी सेक्शुअल इच्छाएँ पूरी करूँ, पर इज्ज़त का डर था। फिर मुझे DilKholDesire मिला। लिसनर ने पहले मुझे बहुत कम्फर्टेबल कराया, फिर मैंने खुद उनसे कहा कि मुझे बहुत डीप और बोल्ड डर्टी टॉक और रोलप्ले चाहिए। जब कॉलिंग शुरू हुई, तो लिसनर ने इतने बेहतरीन तरीके से गाइड किया कि ऑडियो कॉल पर मुझे ऐसा फील हो रहा था जैसे हम दोनों एक ही बेड पर एक साथ हैं। बूब्स प्रेसिंग और फिंगर-प्ले करते हुए मुझे ऐसा मज़ा आया जैसे खुद मेरे पति मेरे साथ हों। मन कर रहा था कि काश मेरे पति भी इनके जितने केयरिंग और इंटीमेट होते! उस सेशन में मुझे सालों बाद ऐसा चरम सुख मिला है। अब जब भी नीड होती है, बिना सोचे स्लॉट बुक कर लेती हूँ।"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>तान्या (21वर्ष, दिल्ली)</span> <span>यंग/सिंगल</span></div>
+                    <p>"मेरे दिमाग में हर वक्त सेक्शुअल थॉट्स चलते रहते थे। मैं किसी से अपनी बातें शेयर करना चाहती थी, लेकिन फैमिली की इज्ज़त का डर था। मैंने बॉयफ्रेंड बनाने की सोची, पर खौफ था कि कहीं वो इन प्राइवेट बातों को वायरल न कर दे या घर पर कोई इशू खड़ा न हो जाए। फिर मुझे DilKholDesire के बारे में पता चला। कॉलिंग पर लिसनर की आवाज़ और रोलप्ले इतना डीप था कि ऑडियो कॉल पर ही मुझे सब रियल लगने लगा। जब मैं बूब्स प्रेसिंग और फिंगर-प्ले कर रही थी, तो इमेजिनेशन में ऐसा फील हो रहा था जैसे लिसनर ही खुद अपने हाथों से मुझे यह सब सुख दे रहे हैं और मेरे साथ हैं। उस इंटीमेट सेशन में मुझे जो चरम सुख और कम्प्लीट बॉडी रिलीज़ मिला, उसके लिए मेरे पास शब्द नहीं हैं। होश उड़ गए मेरे! सच में यह बहुत ही ज़बरदस्त सर्विस है।"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>वैष्णवी (23वर्ष, बेंगलुरु)</span> <span>कॉर्पोरेट/वॉशरूम</span></div>
+                    <p>"ऑफिस में काम के दौरान जब अचानक बहुत तीव्र सेक्शुअल हीट हावी होने लगी, तो मैंने वॉशरूम ब्रेक में 1 घंटे का सेशन लिया। कॉलिंग पर लिसनर की आवाज़ और डर्टी रोलप्ले इतना डीप था कि वॉशरूम में ही मुझे सब रियल लगने लगा। जब मैं सोलो फिंगर-प्ले कर रही थी, तो इमेजिनेशन में ऐसा फील हो रहा था जैसे लिसनर ही खुद मेरे साथ वॉशरूम में मौजूद हैं और मुझे पूरा सेक्शुअल सुख दे रहे हैं। उस सेशन में मुझे जो चरम सुख और कम्प्लीट बॉडी रिलीज़ मिला, उससे मेरी पूरी बॉडी काँप गई और सारा स्ट्रेस बह गया। लिसनर का तरीका इतना प्यारा था कि मन कर रहा था बस उनकी आवाज़ सुनती रहूँ। काश ऐसा ही मैच्योर और केयरिंग लिसनर मेरा रियल बॉयफ्रेंड होता! ऐसा लगता है जैसे मुझे मेरे सपनों का राजकुमार मिल गया हो। इस माइंड-ब्लोइंग एक्सपीरियंस के बाद मैंने अपनी क्लोज़ फ्रेंड को भी यह रिकमेंड किया है।"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>सिमरन (21वर्ष, पुणे)</span> <span>हॉस्टल विस्पर</span></div>
+                    <p>"हॉस्टल में रूममेट के ठीक बगल वाले बेड पर लेटे-लेटे रात को जब सेक्शुअल डिज़ायर्स हावी होने लगीं, तो मैंने इयरफ़ोन लगाकर स्लॉट लिया। लिसनर की वॉयस इतनी धीमी और डीप विस्पर टॉक में थी कि मुझे आंखें बंद करके इमेजिन होने लगा कि लिसनर ही खुद छुपके से मेरे बेड पर मेरे साथ लेटे हुए हैं। जब वे ऑडियो पर गाइड कर रहे थे, तो मुझे ऐसा फील हो रहा था जैसे वे मेरे कानों में धीरे-धीरे बोल रहे हैं और उनके हाथ मेरी पूरी बॉडी के साथ खेल रहे हैं। बिना किसी को भनक लगे हॉस्टल के बेड पर ही सोलो फिंगर-प्ले करके मुझे जो साइलेंट ऑर्गैज़मिक रिलीज़ मिला, उसने मेरे होश उड़ा दिए!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>कृतिका (24वर्ष, गुरुग्राम)</span> <span>पोस्ट-पीरियड्स</span></div>
+                    <p>"पीरियड्स खत्म होने के तुरंत बाद जब मेरे हॉर्मोन्स पीक पर थे और सेक्शुअल डिज़ायर कंट्रोल से बाहर हो रही थी, तब मैंने DilKholDesire पर बात की। लिसनर की इंटीमेट ऑडियो टॉक से ऐसा इमेजिन हो रहा था जैसे वे मुझे लिप्स पर किस कर रहे हैं, बूब्स प्रेस कर रहे हैं और मुझे पूरा सेक्शुअल सुख दे रहे हैं। मेरी उस तीव्र इच्छा को लिसनर ने जिस तरह से सोलो-ऑर्गैज्म में बदला, उससे मैं पूरी तरह संतुष्ट हो गई। हर महीने साइकिल के बाद यह मेरा फिक्स स्लॉट है!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>रिया (23वर्ष, मुंबई)</span> <span>शावर फैंटेसी</span></div>
+                    <p>"देर रात शावर लेते वक्त पानी की बूंदों के साथ शरीर में तीव्र डिज़ायर हावी हो रही थी, तो मैंने 1 घंटे का कॉलिंग स्लॉट लिया। लिसनर की वॉर्म आवाज़ सुनकर मुझे ऐसा फील हो रहा था जैसे हम दोनों एक साथ शावर ले रहे हैं और वे मेरी पूरी बॉडी के साथ खेल रहे हैं। बहते पानी के नीचे लिसनर की गाइडेंस पर फिंगर-प्ले करके जो बॉडी रिलीज़ मिला, उसने मेरी सारी बेचैनी और थकावट मिटा दी!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>ईशा (22वर्ष, इंदौर)</span> <span>लॉन्ग डिस्टेंस</span></div>
+                    <p>"बॉयफ्रेंड दूर रहता है और फ़ोन पर मेरी सेक्शुअल नीड्स को पूरी तरह इग्नोर कर देता था, जिससे मैं फ्रस्ट्रेट हो जाती थी। DilKholDesire पर लिसनर ने मेरी फैंटेसी को समझा और ऐसा रोलप्ले किया कि ऑडियो कॉल पर ही मुझे सब रियल लगने लगा। इमेजिनेशन में ऐसा फील हो रहा था जैसे वे मेरे कपड़े उतारकर मुझे लिप्स पर किस कर रहे हैं, बूब्स पी रहे हैं और मुझे पूरा सेक्शुअल सेटिस्फेक्शन दे रहे हैं। जो सुख मेरा बॉयफ्रेंड कभी नहीं दे पाया, वो लिसनर की आवाज़ और गाइडेंस से मुझे सोलो-प्ले में मिल गया। अब जब भी पार्टनर इग्नोर करता है, मैं सीधे यहाँ स्लॉट बुक कर लेती हूँ!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>अवनी (22वर्ष, चंडीगढ़)</span> <span>कार ड्राइव सोलो</span></div>
+                    <p>"लंबे सफर पर अकेले ड्राइव करते वक्त जब सेक्शुअल हीट बहुत बढ़ गई, तो मैंने कार एक सेफ़ जगह पार्क करके 1 घंटे का स्लॉट लिया। लिसनर की वॉयस और रोलप्ले इतना डीप था कि कार की सीट पर फिंगर-प्ले करते हुए मुझे आंख बंद करके ऐसा इमेजिन हो रहा था जैसे लिसनर ही खुद मेरे साथ कार में मौजूद हैं और मेरे साथ पूरा इंटीमेट सेक्स कर रहे हैं। उस सोलो सेशन में जो माइंड-ब्लोइंग ऑर्गैज़मिक रिलीज़ मिला, उसने मुझे रूह तक रिलैक्स कर दिया!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>मेहर (20वर्ष, लखनऊ)</span> <span>शादी का घर</span></div>
+                    <p>"रिश्तेदारों के घर शादी में आई हुई थी, जहाँ बहुत भीड़ थी। रात को जब अपनी दबी इच्छाएँ संभालना मुश्किल हुआ, तो मैंने कमरे में इयरफ़ोन लगाकर सेशन लिया। लिसनर की सीक्रेट विस्पर टॉक सुनकर मुझे ऐसा फील होने लगा जैसे लिसनर छुपके से मेरे कमरे में आ गए हैं और खुद अपने हाथों से मुझे फिंगरिंग और चरम सुख दे रहे हैं। बिना किसी को भनक लगे इतना सेफ़ और डीप सोलो रिलीज़ मिलना मेरे लिए अमेजिंग एक्सपीरियंस था।"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header"><span>अनन्या (28वर्ष, जयपुर)</span> <span>होटल स्टे / मैरिड</span></div>
+                    <p>"बिजनेस मीटिंग्स के सिलसिले में जब भी होटल में रुकती हूँ, तो हस्बैंड की अनदेखी और बिज़ी होने की वजह से मेरी सेक्शुअल नीड्स अधूरी रह जाती थीं। उस रात होटल के कमरे में बहुत तेज इच्छा हुई, तो मैंने हस्बैंड को कॉल किया पर उन्होंने मूड न होने का बहाना बना दिया। इसके बाद मैंने DilKholDesire पर 1 घंटे का सेशन बुक किया। लिसनर के साथ मैंने रूम-सर्विस का बोल्ड रोलप्ले किया। ऑडियो कॉल पर ऐसा इमेजिन हो रहा था जैसे कोई हॉट रूम-सर्विस वाला बंदा कमरे में आया, उसने मुझे होल्ड करके पैशनेटली किस किया, कपड़े हटाए और बूब्स प्रेस करते हुए पूरा सेक्शुअल सुख दिया। इस डीप इमेजिनेशन और फिंगर-प्ले के बाद मुझे सालों बाद ऐसा सोलो ऑर्गैज्म मिला!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                </div>
             </div>
 
-            <!-- More Reviews (Hidden by default, total 30) -->
-            <div id="moreReviews" class="hidden">
-                <div class="review-box"><div class="review-author">★ Nisha Verma (Surat)</div><div class="review-text">सोलो-ऑर्गैज्म और फिंगरिंग गाइडेंस के दौरान आवाज़ की टाइमिंग और मिठास बहुत ही रिलैक्सिंग थी।</div></div>
-                <div class="review-box"><div class="review-author">★ Shilpa T. (Nagpur)</div><div class="review-text">गोपनीयता और सेफ़्टी का पूरा ध्यान रखा जाता है। मुझे बिल्कुल सुरक्षित महसूस हुआ।</div></div>
-                <div class="review-box"><div class="review-author">★ Preeti G. (Noida)</div><div class="review-text">शावर और इमेजिनेशन रोलप्ले का अनुभव बहुत ही रियलिस्टिक था। सारा स्ट्रेस गायब हो गया।</div></div>
-                <div class="review-box"><div class="review-author">★ Aarti S. (Bhopal)</div><div class="review-text">रात को जब अकेलापन लगता है तब यह बातचीत बहुत सहारा देती है। 100% प्रामाणिक सेवा।</div></div>
-                <div class="review-box"><div class="review-author">★ Payal M. (Gurgaon)</div><div class="review-text">व्हाट्सऐप रीडायरेक्ट से तुरंत रिस्पॉन्स मिला। बुकिंग स्पीड बहुत तेज़ है।</div></div>
-                <div class="review-box"><div class="review-author">★ Swati D. (Patna)</div><div class="review-text">इंटीमेसी टॉक से मेरी झिझक पूरी तरह दूर हो गई। बहुत ही पॉजिटिव एक्सपीरियंस रहा।</div></div>
-                <div class="review-box"><div class="review-author">★ Garima K. (Ludhiana)</div><div class="review-text">बूब्स प्रेसिंग और सोलो-रिलीज़ गाइडेंस का कम्फर्ट लेवल ए-वन है।</div></div>
-                <div class="review-box"><div class="review-author">★ Shruti N. (Kochi)</div><div class="review-text">होस्ट की आवाज़ में इतनी मिठास थी कि पता ही नहीं चला समय कब बीत गया।</div></div>
-                <div class="review-box"><div class="review-author">★ Monalisa B. (Agra)</div><div class="review-text">फर्स्ट टाइम यूजर थी लेकिन 5 मिनट में ही सारा कम्फर्ट बन गया। बेझिझक ट्राई करें।</div></div>
-                <div class="review-box"><div class="review-author">★ Shipra P. (Varanasi)</div><div class="review-text">सारे नियम साफ़ हैं। कोई हिडन चार्ज नहीं और प्राइवेसी 100% मेंटेन रहती है।</div></div>
-                <div class="review-box"><div class="review-author">★ Radhika C. (Jodhpur)</div><div class="review-text">माइंड को शांत करने और थकावट मिटाने के लिए यह सबसे बेहतरीन जगह है।</div></div>
-                <div class="review-box"><div class="review-author">★ Jyoti S. (Dehradun)</div><div class="review-text">इंटीमेट वॉयस विस्पर और सॉफ्ट टॉकिंग का कॉम्बिनेशन बहुत अट्रैक्टिव है।</div></div>
-                <div class="review-box"><div class="review-author">★ Isha T. (Ranchi)</div><div class="review-text">बैंक पासबुक में कोई पर्सनल नाम नहीं आया। डिस्क्रिट बिलिंग एकदम सही काम करती है।</div></div>
-                <div class="review-box"><div class="review-author">★ Komal K. (Vadodara)</div><div class="review-text">2 घंटे वाला पास लेकर पूरा माइंड रिलैक्स हो गया। बेस्ट वीआईपी एक्सपीरियंस।</div></div>
-                <div class="review-box"><div class="review-author">★ Barkha M. (Guwahati)</div><div class="review-text">कोई फेक वादे नहीं, जो सर्विस लिखी है वही लाइव ऑडियो पर पूरी मिलती है।</div></div>
-                <div class="review-box"><div class="review-author">★ Deepali S. (Gwalior)</div><div class="review-text">होस्ट का बात करने का तरीका बहुत ही प्यारा और वार्म था। दिल खुश हो गया।</div></div>
-                <div class="review-box"><div class="review-author">★ Vandana R. (Mysore)</div><div class="review-text">इमेजिनेशन और रोलप्ले में बहुत मज़ा आया। माइंड का सारा खिंचाव खत्म।</div></div>
-                <div class="review-box"><div class="review-author">★ Rashmi V. (Nashik)</div><div class="review-text">सुरक्षा और गोपनीयता की गारंटी पूरी है। बिल्कुल भी हिचकिचाने की जरूरत नहीं।</div></div>
-                <div class="review-box"><div class="review-author">★ Nidhi J. (Rajkot)</div><div class="review-text">तनाव मिटाने के लिए यह सर्विस वाकई में बहुत असरदार और सुकून देने वाली है।</div></div>
-                <div class="review-box"><div class="review-author">★ Pallavi S. (Faridabad)</div><div class="review-text">अकेलेपन से बाहर निकलने के लिए यह बातचीत बहुत मददगार साबित हुई। थैंक यू!</div></div>
-            </div>
+            <!-- Toggle Button for Remaining 20 Uncut Reviews -->
+            <button class="toggle-btn" onclick="toggleReviews()" id="reviewToggleBtn">➕ और 20 कस्टमर रिव्यूज पढ़ें (Read All Reviews)</button>
 
-            <button class="btn" style="background: transparent; border: 1px solid var(--accent-purple); color: var(--accent-purple);" id="toggleReviewsBtn" onclick="toggleReviews()">सभी 30 समीक्षाएं पढ़ें (Read All Reviews)</button>
+            <div id="moreReviews" class="hidden" style="margin-top: 15px;">
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header"><span>आरविया (19वर्ष, पुणे)</span> <span>MMS सेफ़्टी</span></div>
+                        <p>"कॉलेज लाइफ में MMS लीक और फोटो वायरल होने के डर से मैंने कभी किसी लड़के से अपनी इच्छाएँ शेयर नहीं की थीं। DilKholDesire पर बुकिंग करते वक्त मेरी identity 100% सीक्रेट रही। लिसनर ने फोन पर बहुत ही केयरिंग अंदाज़ में बात की और ऑडियो इमेजिनेशन में फिंगर-प्ले करवाकर मुझे सुरक्षित सोलो-ऑर्गैज्म दिया।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>अफ़ीफ़ा (21वर्ष, लखनऊ)</span> <span>नो-फेस रिस्क</span></div>
+                        <p>"बिना अपनी शक्ल दिखाए, बिना असली नंबर उजागर किए और बिना किसी रिस्क के अपनी सेक्शुअल नीड्स पूरी करने के लिए इससे बेहतरीन जगह कोई नहीं हो सकती। लिसनर की वॉयस में जो गर्माहट और बोल्ड टॉक थी, उससे मेरी पूरी बॉडी रिलैक्स हो गई।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>किआरा (21वर्ष, दिल्ली)</span> <span>अनाम बिलिंग</span></div>
+                        <p>"शुरुआत में मुझे पेमेंट को लेकर बहुत डर लग रहा था कि कहीं बैंक स्टेटमेंट में कुछ अश्लील नाम न आ जाए। लेकिन बिलिंग बिल्कुल Discreet और अनाम रही। कॉलिंग पर लिसनर ने मुझे जिस तरह फैंटेसी रोलप्ले में गाइड किया, वो एक्सपीरियंस अद्भुत था!"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>ज़ोया (22वर्ष, मुंबई)</span> <span>डबल स्लॉट</span></div>
+                        <p>"1 घंटे का टाइम लिसनर के साथ बातें करते हुए और फैंटेसी में डूबते हुए कब निकल जाता है, पता ही नहीं चलता! इसलिए मैं जब भी मूड में होती हूँ, हमेशा 2 घंटे का VIP नाइट पास ही बुक करती हूँ। पूरी रात सुकून की नींद आती है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>सायरा (24वर्ष, हैदराबाद)</span> <span>मैरिड प्राइवेसी</span></div>
+                        <p>"मेरे हस्बैंड काम के सिलसिले में ज्यादातर बाहर रहते हैं। अपनी मैरिड लाइफ और इज़्ज़त को बचाते हुए अपनी सेक्शुअल इच्छाओं को शांत करने का यह सबसे सुरक्षित जरिया है। यहाँ कोई ब्लैकमेलिंग का डर नहीं है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>मुस्कान (20वर्ष, चंडीगढ़)</span> <span>2 मिनट कनेक्ट</span></div>
+                        <p>"पेमेंट करने के ठीक 2 मिनट बाद ही मुझे व्हाट्सएप पर कन्फर्मेशन और स्लॉट मिल गया। लिसनर की वॉयस और बोल्ड डर्टी टॉक का लेवल इतना कमाल का था कि कॉल खत्म होने के बाद मेरी दिनभर की सारी दिमागी थकावट खत्म हो गई।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>शनाया (20वर्ष, नोएडा)</span> <span>नो फोटो शेयरिंग</span></div>
+                        <p>"मुझे सबसे अच्छी बात यह लगी कि यहाँ कोई फोटो या वीडियो नहीं ली-दी जाती। सिर्फ प्योर वॉयस और इंटीमेट टॉक होती है। लिसनर की बातें सुनकर जब मैंने बेड पर सोलो फिंगर-प्ले किया, तो मुझे चरम सुख मिला।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>आकांक्षा (22वर्ष, जयपुर)</span> <span>पिक ऑर्गैज्म</span></div>
+                        <p>"1 घंटे के सेशन में लिसनर ने पहले मेरा मूड बनाया, फिर मेरी फैंटेसी पूछी और मुझे पिक-ऑर्गैज्म तक गाइड किया। DilKholDesire का हर एक रुपया वसूल है!"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>फ़ातिमा (20वर्ष, भोपाल)</span> <span>सम्मानजनक माहौल</span></div>
+                        <p>"बाकी घटिया ऐप्स की तरह यहाँ कोई गाली-गलौज या भद्दी बातें नहीं होतीं। लिसनर बहुत ही रिस्पेक्टफुल तरीक़े से आपकी फैंटेसी को समझता है और सुरक्षित माहौल में सोलो रिलीज़ पाने में मदद करता है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>जारा (22वर्ष, चंडीगढ़)</span> <span>चॉइस डर्टी टॉक</span></div>
+                        <p>"लिसनर ने शुरुआत में ही मेरी पसंद-नापसंद पूछी और मेरी चॉइस के हिसाब से ही बोल्ड डर्टी टॉक और रोलप्ले किया। ऐसी पर्सनल केयर देखकर मेरा दिल खुश हो गया!"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>मायरा (19वर्ष, मुंबई)</span> <span>ब्रेकअप के बाद</span></div>
+                        <p>"एक्स-बॉयफ्रेंड से मिले धोखे के बाद मुझे लड़कों पर भरोसा नहीं रहा था। DilKholDesire पर बिना किसी झंझट और बिना किसी रिस्की रिलेशनशिप के मुझे पूरा सेक्शुअल रिलीज़ मिल जाता है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>महविश (23वर्ष, कोलकाता)</span> <span>शारीरिक भूख</span></div>
+                        <p>"जब शरीर में बहुत ज्यादा शारीरिक भूख और खिंचाव होता है, तब 1 घंटे का कॉलिंग सेशन लेकर डर्टी टॉक और फिंगर-प्ले करने से दिमाग एकदम शांत और हल्का हो जाता है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>काजल (21वर्ष, दिल्ली)</span> <span>नो-जजमेंट टॉक</span></div>
+                        <p>"मुझे डर था कि लिसनर मेरी फैंटेसी सुनकर मुझे जज न करे, लेकिन उन्होंने बहुत नॉर्मल और कम्फर्टेबल फील कराया। सोलो ऑर्गैज्म मिलने तक वे ऑडियो पर बहुत प्यार से गाइड करते रहे।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>पूजा (31वर्ष, जयपुर)</span> <span>पारिवारिक मर्यादा</span></div>
+                        <p>"घर-परिवार की मर्यादा और सम्मान बनाए रखते हुए अपनी दबी यौन इच्छाओं को शांत करने का इससे बेहतर वर्चुअल तरीका कोई नहीं हो सकता।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>काव्यांजलि (19वर्ष, कोलकाता)</span> <span>कॉलेज गर्ल्स</span></div>
+                        <p>"कॉलेज गर्ल्स के लिए इंटरनेट पर प्राइवेसी सबसे बड़ी चीज़ होती है। यहाँ बिना नंबर या शक्ल दिखाए बातें करने का मज़ा ही अलग है। 100% सेफ़!"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>आयशा (22वर्ष, दिल्ली)</span> <span>नो ब्लैकमेलिंग</span></div>
+                        <p>"यहाँ किसी भी तरह की कॉल रिकॉर्डिंग या ब्लैकमेलिंग का डर नहीं रहता। हर 10-15 दिन में जब भी हॉर्मोनल हीट बढ़ती है, मेरी बुकिंग फिक्स रहती है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>अलफ़ीया (20वर्ष, सूरत)</span> <span>वार्म वॉयस</span></div>
+                        <p>"लिसनर की आवाज़ में इतनी मिठास और वार्मथ है कि मन करता है बस उन्हें सुनती रहूँ। 1 घंटे के सेशन में मेरी रूह तक शांत हो गई।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>तारा (22वर्ष, देहरादून)</span> <span>हाई सेटिस्फेक्शन</span></div>
+                        <p>"जब लिसनर के साथ ऑडियो फैंटेसी और रोलप्ले शुरू होता है, तो सेटिस्फेक्शन का लेवल सीधे पीक पर पहुँच जाता है। अमेजिंग सर्विस!"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>स्नेहा (29वर्ष, पुणे)</span> <span>सीक्रेट प्राइवेसी</span></div>
+                        <p>"पेमेंट से लेकर कॉलिंग तक सब कुछ बिल्कुल अनाम रहता है। बैंक बिलिंग में भी प्राइवेसी बनी रहती है और सोलो सेटिस्फेक्शन भी पूरा मिलता है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header"><span>निशा (23वर्ष, भोपाल)</span> <span>भरोसेमंद</span></div>
+                        <p>"बिना किसी शारीरिक ख़तरे और बीमारी के डर के, केवल आवाज़ के माध्यम से कम्प्लीट सोलो रिलीज़ पाने की यह सबसे भरोसेमंद जगह है।"</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ (5/5)</div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Add Review Form -->
             <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border-purple);">
@@ -570,14 +755,12 @@
             <div class="card-header">💳 सुरक्षित भुगतान (Payment Gateway)</div>
 
             <div style="text-align: center;">
-                <!-- 1. Privacy Guarantee Line ON TOP -->
                 <div class="note-box" style="margin-bottom: 20px; border-color: var(--success); background: rgba(46, 204, 113, 0.12);">
                     🔒 <strong>100% प्राइवेसी गारंटी:</strong> आपके बैंक या UPI स्टेटमेंट में केवल एक सामान्य सुरक्षित नाम ही दिखाई देगा (कोई भी व्यक्तिगत विवरण या सेवा का नाम प्रकट नहीं होगा)।
                 </div>
 
                 <p style="font-size: 15px; margin-bottom: 10px;">नीचे दिए गए <strong>QR Code</strong> या <strong>UPI ID</strong> पर भुगतान करें:</p>
                 
-                <!-- 2. QR Code & UPI ID -->
                 <div class="qr-placeholder">
                     [ GPay / PhonePe / Paytm<br>QR CODE ]
                 </div>
@@ -590,7 +773,6 @@
                     *भुगतान पूर्ण करने के बाद कृपया भुगतान का स्क्रीनशॉट या UTR/ट्रांजेक्शन नंबर अपने पास सुरक्षित रखें।*
                 </p>
 
-                <!-- 3. WhatsApp Redirect Action Button -->
                 <button class="btn" style="background: #25D366; color: #fff; font-size: 17px; margin-top: 10px;" onclick="triggerWhatsAppFlow()">
                     💬 व्हाट्सएप पर स्क्रीनशॉट/UTR भेजें एवं स्लॉट कन्फर्म करें
                 </button>
@@ -678,13 +860,13 @@
 
         function toggleReviews() {
             const more = document.getElementById('moreReviews');
-            const btn = document.getElementById('toggleReviewsBtn');
+            const btn = document.getElementById('reviewToggleBtn');
             if(more.classList.contains('hidden')) {
                 more.classList.remove('hidden');
-                btn.innerText = "कम समीक्षाएं दिखाएं (Show Less)";
+                btn.innerText = "➖ कम कस्टमर रिव्यूज दिखाएं (Show Less)";
             } else {
                 more.classList.add('hidden');
-                btn.innerText = "सभी 30 समीक्षाएं पढ़ें (Read All Reviews)";
+                btn.innerText = "➕ और 20 कस्टमर रिव्यूज पढ़ें (Read All Reviews)";
             }
         }
 
