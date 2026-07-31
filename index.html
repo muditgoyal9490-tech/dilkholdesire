@@ -38,7 +38,6 @@
             padding: 15px;
         }
 
-        /* 18+ Purple Integrated Modal */
         #ageModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -82,18 +81,12 @@
             box-shadow: 0 4px 15px rgba(255, 42, 133, 0.3);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 42, 133, 0.5);
-        }
-
         .btn-danger {
             background: #4a1525;
             border: 1px solid var(--danger);
             color: #ff8a8a;
         }
 
-        /* Header & Logo Container */
         header {
             text-align: center;
             padding: 25px 10px;
@@ -102,8 +95,8 @@
         }
 
         .logo-box {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             margin: 0 auto 15px;
             border-radius: 50%;
             border: 3px solid var(--neon-pink);
@@ -136,7 +129,6 @@
             margin-top: 5px;
         }
 
-        /* Cards */
         .card {
             background: var(--card-purple);
             border: 1px solid var(--border-purple);
@@ -155,7 +147,6 @@
             font-weight: bold;
         }
 
-        /* Reviews Grid & Cards */
         .reviews-grid {
             display: flex;
             flex-direction: column;
@@ -220,7 +211,6 @@
             margin-bottom: 15px;
         }
 
-        /* Services */
         .service-item {
             margin-bottom: 18px;
             background: #130724;
@@ -261,7 +251,6 @@
             color: var(--neon-pink);
         }
 
-        /* Pricing */
         .price-card {
             background: #130724;
             border: 1px solid var(--accent-purple);
@@ -283,7 +272,6 @@
             margin: 5px 0;
         }
 
-        /* Form Controls */
         .form-group {
             margin-bottom: 15px;
         }
@@ -305,12 +293,6 @@
             font-size: 14px;
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 8px rgba(255, 42, 133, 0.4);
-        }
-
         .checkbox-label {
             display: flex;
             align-items: flex-start;
@@ -320,11 +302,6 @@
             cursor: pointer;
         }
 
-        .checkbox-label input {
-            margin-top: 3px;
-        }
-
-        /* Payment Section */
         .qr-placeholder {
             width: 190px;
             height: 190px;
@@ -341,7 +318,6 @@
             box-shadow: 0 0 15px rgba(255, 42, 133, 0.3);
         }
 
-        /* Custom Popup Modal for Busy Host */
         #busyPopupModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -354,7 +330,6 @@
             padding: 20px;
         }
 
-        /* Footer & Admin */
         footer {
             text-align: center;
             padding: 20px;
@@ -377,7 +352,6 @@
 </head>
 <body>
 
-    <!-- 18+ Legal Consent Modal -->
     <div id="ageModal">
         <div class="modal-box">
             <h2>🔞 18+ आयु पुष्टि एवं लीगल डिस्क्लेमर</h2>
@@ -390,12 +364,11 @@
                     <span>मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है और मैं अपनी स्वेच्छा से प्रवेश कर रहा/रही हूँ।</span>
                 </label>
             </div>
-            <button class="btn" id="enterBtn" onclick="acceptAge()">वेबसाइट में प्रवेश करें</button>
+            <button class="btn" onclick="acceptAge()">वेबसाइट में प्रवेश करें</button>
             <button class="btn btn-danger" style="margin-top: 8px;" onclick="rejectAge()">बाहर निकलें (Exit)</button>
         </div>
     </div>
 
-    <!-- Live Slot Busy Popup Modal -->
     <div id="busyPopupModal" class="hidden">
         <div class="modal-box" style="border-color: var(--gold);">
             <h3 style="color: var(--gold); margin-bottom: 10px;">⏳ बुकिंग दर्ज कर ली गई है!</h3>
@@ -409,16 +382,14 @@
     </div>
 
     <div class="container">
-        <!-- Header with Google Drive Direct Logo -->
         <header>
             <div class="logo-box">
-                <img src="https://lh3.googleusercontent.com/d/1rq9AC71rUD3LFh1BevwyPDwJ9Exdvj0z" alt="DilKholDesire Logo">
+                <img src="logo.png" alt="DilKholDesire Logo">
             </div>
             <h1>DilKholDesire</h1>
             <p>100% सीक्रेट, सेफ़ एवं अनसेंसर्ड पर्सनल ऑडियो टॉकिंग व रिलैक्सेशन</p>
         </header>
 
-        <!-- Section 3: Verified Uncut Customer Reviews -->
         <div class="card">
             <h2 class="card-header">Verified Customer Reviews</h2>
             
@@ -426,7 +397,6 @@
                 🔒 <strong>गोपनीयता एवं स्वेच्छा नोट:</strong> यहाँ दिखाई गई सभी समीक्षाएं हमारे ग्राहकों ने अपनी संतुष्टि, व्यक्तिगत अनुभव और भावनाओं को महसूस करके स्वयं अपनी इच्छा से लिखी हैं।
             </div>
 
-            <!-- Top 10 Full Uncut Hero Reviews -->
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="review-header"><span>रिचा (28वर्ष, दिल्ली)</span> <span>मैरिड</span></div>
@@ -489,7 +459,6 @@
                 </div>
             </div>
 
-            <!-- Toggle Button for Remaining 20 Uncut Reviews -->
             <button class="toggle-btn" onclick="toggleReviews()" id="reviewToggleBtn">➕ और 20 कस्टमर रिव्यूज पढ़ें (Read All Reviews)</button>
 
             <div id="moreReviews" class="hidden" style="margin-top: 15px;">
@@ -616,7 +585,6 @@
                 </div>
             </div>
 
-            <!-- Add Review Form -->
             <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border-purple);">
                 <h4 style="color: var(--neon-pink); margin-bottom: 10px;">✍️ अपनी समीक्षा जोड़ें (Add Your Review)</h4>
                 <div class="form-group">
@@ -629,7 +597,6 @@
             </div>
         </div>
 
-        <!-- Section 4: Services -->
         <div class="card">
             <div class="card-header">📋 हमारी विशेष सेवाएँ (Services)</div>
 
@@ -664,7 +631,6 @@
             </div>
         </div>
 
-        <!-- Section 5: Pricing & Slots -->
         <div class="card">
             <div class="card-header">💳 विशेष स्लॉट एवं शुल्क (केवल आज के लिए 50% विशेष छूट)</div>
 
@@ -687,7 +653,6 @@
             </div>
         </div>
 
-        <!-- Section 6: Safety Note & Booking Form -->
         <div class="card">
             <div class="card-header">🛡️ सेफ़्टी नोट एवं बुकिंग फ़ॉर्म</div>
 
@@ -750,7 +715,6 @@
             </form>
         </div>
 
-        <!-- Section 7: Correct Payment Flow Section -->
         <div id="paymentSection" class="card hidden">
             <div class="card-header">💳 सुरक्षित भुगतान (Payment Gateway)</div>
 
@@ -779,7 +743,6 @@
             </div>
         </div>
 
-        <!-- Section 8.1: Join as Host / Partner -->
         <div class="card">
             <div class="card-header">💼 हमारे साथ होस्ट / बिज़नेस पार्टनर के रूप में जुड़ें</div>
             <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 15px;">
@@ -799,14 +762,12 @@
             </form>
         </div>
 
-        <!-- Footer -->
         <footer>
             <p>© 2026 DilKholDesire. All Rights Reserved. 100% Private & Confidential Audio Companion Services.</p>
             <span class="admin-link" onclick="openAdminModal()">🔒 Admin Panel Login</span>
         </footer>
     </div>
 
-    <!-- Admin Password Modal -->
     <div id="adminModal" class="hidden" style="position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); display:flex; justify-content:center; align-items:center; z-index:99999;">
         <div class="modal-box" style="max-width: 350px;">
             <h3>🔐 Admin Dashboard Access</h3>
@@ -817,7 +778,6 @@
         </div>
     </div>
 
-    <!-- Admin Panel View -->
     <div id="adminDashboard" class="container hidden" style="background: #0f0817; padding: 20px; border-radius: 12px; border: 2px solid var(--accent-purple); margin-top: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-purple); padding-bottom: 10px; margin-bottom: 20px;">
             <h2 style="color: var(--neon-pink);">🛡️ Admin Control Panel</h2>
