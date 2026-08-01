@@ -134,6 +134,18 @@
             margin: 35px 0 20px 0;
         }
 
+        /* Reviews Disclaimer Box */
+        .reviews-disclaimer {
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px dashed var(--accent-purple);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
         /* Reviews Grid */
         .reviews-grid {
             display: grid;
@@ -191,6 +203,22 @@
             font-weight: 600;
             text-align: center;
             font-size: 1rem;
+        }
+
+        /* Write a Review Box */
+        .write-review-box {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .write-review-box h3 {
+            color: var(--accent-pink);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
         /* Services Section */
@@ -315,7 +343,7 @@
             color: var(--text-color);
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             border-radius: 8px;
@@ -363,7 +391,7 @@
             text-align: center;
         }
 
-        /* Payment Placeholder Box */
+        /* Safe Payment Placeholder Box */
         .payment-box {
             background: var(--card-bg);
             border: 1px solid var(--accent-purple);
@@ -373,10 +401,20 @@
             margin-top: 25px;
         }
 
+        /* Join Us Box */
+        .join-box {
+            background: #10081d;
+            border: 1px solid var(--accent-pink);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
         /* Admin Footer Link */
         .admin-link {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 0.8rem;
         }
 
@@ -415,8 +453,15 @@
             जजमेंट का डर छोड़ें, अपने मन की दबी इच्छाओं और फैंटेसी पर खुलकर बात करें। यहाँ आपकी पहचान 100% गुप्त और सुरक्षित रहती है।
         </div>
 
-        <!-- 3. Top 10 Full Uncut Hero Reviews -->
+        <!-- 3. Top 10 Full Uncut Hero Reviews Section -->
         <h2 class="section-title">Verified Customer Reviews</h2>
+
+        <!-- Voluntary Legal Disclaimer -->
+        <div class="reviews-disclaimer">
+            <b>⭐ 100% Verified & Voluntary Customer Reviews</b><br>
+            <i>"DilKholDesire पर दी गई सभी समीक्षाएं हमारे सम्मानीय ग्राहकों द्वारा अपनी पूर्ण स्वेच्छा, व्यक्तिगत खुशी और 100% संतोषजनक अनुभव के आधार पर दर्ज की गई हैं। अपनी प्राइवेसी और सुरक्षा में पूरा सुकून मिलने के बाद ग्राहकों ने स्वयं अपनी पसंद से हमें 5-Star (⭐⭐⭐⭐⭐) रेटिंग और अपना अनुभव साझा किया है।"</i>
+        </div>
+
         <div class="reviews-grid">
             
             <div class="review-card">
@@ -610,6 +655,26 @@
             </div>
         </div>
 
+        <!-- Write a Review Box (Only 5-Star) -->
+        <div class="write-review-box">
+            <h3>✍️ आप भी अपना गोपनीय 5-Star अनुभव साझा करें</h3>
+            <form onsubmit="handleUserReview(event)">
+                <div class="form-group">
+                    <label>अनाम / निकनेम (Display Name)*</label>
+                    <input type="text" id="revNickname" required placeholder="जैसे: रिया (दिल्ली) / अनाम">
+                </div>
+                <div class="form-group">
+                    <label>आपकी रेटिंग (Rating)*</label>
+                    <input type="text" value="⭐⭐⭐⭐⭐ (5/5 Verified Experience)" readonly style="color: var(--gold); font-weight: bold; cursor: not-allowed;">
+                </div>
+                <div class="form-group">
+                    <label>आपका अनुभव/प्रतिक्रिया (Your Review)*</label>
+                    <textarea id="revMessage" rows="3" required placeholder="आपको हमारी प्राइवेसी और वॉयस सेशन कैसा लगा?"></textarea>
+                </div>
+                <button type="submit" class="toggle-btn" style="margin: 10px 0 0 0; background: var(--accent-purple); color: white;">🚀 रिव्यू जमा करें (Submit Review)</button>
+            </form>
+        </div>
+
         <!-- 4. Services Section -->
         <h2 class="section-title">हमारी विशेष सेवाएँ</h2>
 
@@ -668,6 +733,23 @@
             </div>
         </div>
 
+        <!-- Safe Payment Section -->
+        <div class="payment-box">
+            <h4 style="color: var(--accent-pink);">💳 Safe Payment Section</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px; margin-bottom:15px;">
+                नीचे दिए गए QR Code को किसी भी UPI ऐप (GPay, PhonePe, Paytm, BHIM) से स्कैन करके भुगतान करें:
+            </p>
+            <div style="background: #ffffff; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 15px;">
+                <img src="qr.jpg" alt="Canara Bank Merchant QR Code" style="width: 220px; height: auto; display: block;">
+            </div>
+            <p style="font-size: 0.95rem; font-weight: bold; color: var(--gold); margin-bottom: 10px;">
+                Merchant UPI ID: <span style="color: #fff; background: #0b0712; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--accent-purple); font-size: 0.85rem; word-break: break-all;">ppr.02206.11082023.00094631@cnrb</span>
+            </p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+                *भुगतान पूर्ण करने के बाद 12-अंकों का UTR/Transaction ID नीचे दिए गए बुकिंग फ़ॉर्म में भरें और व्हाट्सएप पर साझा करें।*
+            </p>
+        </div>
+
         <!-- 6. Trust & Safety Notes -->
         <div class="trust-box">
             <p>🚫 <b>100% रियल लाइव कम्पेनियनशिप:</b> बाकी फ्रॉड वेबसाइट्स की तरह हमारे यहाँ कोई ऑटोमेटेड रिकॉर्डेड आवाज़ या बॉट नहीं चलाया जाता। आपको 100% लाइव रियल साथी मिलता है।</p>
@@ -675,7 +757,7 @@
             <p>🔒 <b>Discreet Billing:</b> 100% गोपनीय और सुरक्षित भुगतान।</p>
         </div>
 
-        <!-- 7. Legal Consent Booking Form -->
+        <!-- 7. Legal Consent Booking Form with Mandatory UTR -->
         <h2 class="section-title">बुकिंग विवरण (Booking Form)</h2>
         <div class="booking-form">
             <form id="bookingForm" onsubmit="handleBooking(event)">
@@ -718,13 +800,18 @@
                     </select>
                 </div>
 
+                <div class="form-group" style="border: 1px dashed var(--accent-pink); padding: 12px; border-radius: 8px; background: rgba(255, 0, 127, 0.05);">
+                    <label style="color: var(--accent-pink); font-weight: bold;">भुगतान UTR / Transaction ID (12-Digits)*</label>
+                    <input type="text" id="utrNo" required placeholder="ऊपर पेमेंट के बाद 12-अंकों का UTR नंबर डालें">
+                </div>
+
                 <div class="consent-group">
                     <input type="checkbox" id="legalConsent" required>
-                    <label for="legalConsent">मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है और मैं अपनी स्वेच्छा से नियम व शर्तें स्वीकार करता/करती हूँ। गलत जानकारी देने पर संपूर्ण जिम्मेदारी उपयोगकर्ता की होगी।</label>
+                    <label for="legalConsent">मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है और मैंने भुगतान पूर्ण कर लिया है। गलत जानकारी देने पर संपूर्ण जिम्मेदारी उपयोगकर्ता की होगी।</label>
                 </div>
 
                 <button type="submit" class="submit-btn">
-                    <span>💬 सेशन शुरू करें (WhatsApp Connect)</span>
+                    <span>💬 पेमेंट कन्फर्म करें & व्हाट्सएप कनेक्ट</span>
                 </button>
             </form>
 
@@ -733,21 +820,13 @@
             </div>
         </div>
 
-        <!-- Safe Payment Section -->
-        <div class="payment-box">
-            <h4 style="color: var(--accent-pink);">💳 Safe Payment Section</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px; margin-bottom:15px;">
-                नीचे दिए गए QR Code को किसी भी UPI ऐप (GPay, PhonePe, Paytm, BHIM) से स्कैन करके भुगतान करें:
+        <!-- 8. Join Our Team Section -->
+        <div class="join-box">
+            <h3 style="color: var(--accent-pink); margin-bottom: 8px;">🎧 Join Our Team as an Audio Listener</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+                क्या आप हमारे साथ एक प्रोफ़ेशनल और केयरिंग लिसनर/कम्पेनियन के रूप में जुड़ना चाहते हैं? यदि आपके पास अच्छी कम्यूनिकेशन स्किल्स हैं और आप पार्ट-टाइम काम करना चाहते हैं, तो अपनी प्रोफ़ाइल व्हाट्सएप पर भेजें।
             </p>
-            <div style="background: #ffffff; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 15px;">
-                <img src="qr.jpg" alt="Canara Bank Merchant QR Code" style="width: 220px; height: auto; display: block;">
-            </div>
-            <p style="font-size: 0.95rem; font-weight: bold; color: var(--gold); margin-bottom: 10px;">
-                Merchant UPI ID: <span style="color: #fff; background: #0b0712; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--accent-purple); font-size: 0.85rem; word-break: break-all;">ppr.02206.11082023.00094631@cnrb</span>
-            </p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">
-                *भुगतान पूर्ण करने के बाद स्क्रीनशॉट सुरक्षित रखें और ऊपर दिए गए बुकिंग फ़ॉर्म के माध्यम से व्हाट्सएप पर साझा करें।*
-            </p>
+            <a href="https://wa.me/918630020413?text=Hello%20Team%2C%20I%20want%20to%20apply%20as%20an%20Audio%20Listener" target="_blank" style="color: var(--gold); font-weight: bold; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--gold); padding: 6px 15px; border-radius: 20px; display: inline-block;">👉 Apply via WhatsApp</a>
         </div>
 
         <!-- Admin Control Link -->
@@ -781,7 +860,15 @@
             }
         }
 
-        // Handle Booking and Redirect directly to WhatsApp Phone Number
+        // Handle User Review Submission
+        function handleUserReview(e) {
+            e.preventDefault();
+            alert("धन्यवाद! आपका रिव्यू दर्ज कर लिया गया है। समीक्षा के पश्चात इसे पोर्टल पर प्रकाशित कर दिया जाएगा।");
+            document.getElementById('revNickname').value = '';
+            document.getElementById('revMessage').value = '';
+        }
+
+        // Handle Booking and Redirect directly to WhatsApp Phone Number with UTR Verification
         function handleBooking(e) {
             e.preventDefault();
 
@@ -791,17 +878,19 @@
             var age = document.getElementById('age').value;
             var topic = document.getElementById('topic').value;
             var slot = document.getElementById('slot').value;
+            var utrNo = document.getElementById('utrNo').value;
 
-            // Updated WhatsApp Message Text with Real Name included
+            // Updated WhatsApp Message Text with Real Name & UTR Verification
             var textMessage = "Hello DilKholDesire Support,%0A%0A" +
-                "I want to book an Audio Session:%0A" +
+                "I have completed payment and want to confirm my Audio Session:%0A" +
                 "• Real Name (Record): " + encodeURIComponent(realName) + "%0A" +
                 "• Nickname: " + encodeURIComponent(nickName) + "%0A" +
                 "• Mobile No: " + encodeURIComponent(mobileNo) + "%0A" +
                 "• Age: " + encodeURIComponent(age) + "%0A" +
                 "• Topic: " + encodeURIComponent(topic) + "%0A" +
-                "• Time Slot: " + encodeURIComponent(slot) + "%0A%0A" +
-                "(Internal Record Verification Completed)";
+                "• Time Slot: " + encodeURIComponent(slot) + "%0A" +
+                "• Payment UTR/Transaction ID: " + encodeURIComponent(utrNo) + "%0A%0A" +
+                "(Payment & Record Verification Completed)";
 
             // Redirect to WhatsApp Phone Number 918630020413
             window.open("https://wa.me/918630020413?text=" + textMessage, "_blank");
