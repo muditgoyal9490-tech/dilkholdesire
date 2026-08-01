@@ -85,7 +85,7 @@
             padding: 0 15px;
         }
 
-        /* Header & Headphone/Voice SVG Logo */
+        /* Header & Logo */
         header {
             text-align: center;
             padding: 30px 0 15px 0;
@@ -99,10 +99,11 @@
             margin-bottom: 10px;
         }
 
-        .logo-svg {
-            width: 50px;
-            height: 50px;
-            filter: drop-shadow(0 0 10px var(--accent-pink));
+        .logo-img {
+            width: 60px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent-pink);
         }
 
         .logo-text {
@@ -371,6 +372,18 @@
             text-align: center;
             margin-top: 25px;
         }
+
+        /* Admin Footer Link */
+        .admin-link {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+        }
+
+        .admin-link a {
+            color: #4a346e;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -387,18 +400,10 @@
     </div>
 
     <div class="container">
-        <!-- 2. Header Section with Headphone & Voice Wave SVG Logo -->
+        <!-- 2. Header Section with Image Logo -->
         <header>
             <div class="logo-container">
-                <!-- SVG Neon Headphone + Voice Soundwave Icon -->
-                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path>
-                    <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-                    <path d="M12 8v8" stroke="#9d4edd"></path>
-                    <path d="M9 10v4" stroke="#9d4edd"></path>
-                    <path d="M15 10v4" stroke="#9d4edd"></path>
-                </svg>
+                <img src="logo.png" alt="DilKholDesire Logo" class="logo-img">
                 <div class="logo-text">DilKholDesire</div>
             </div>
             <div class="tagline">"आपकी फैंटेसी, आपकी प्राइवेसी — दिल खोलकर बोलें"</div>
@@ -728,12 +733,26 @@
             </div>
         </div>
 
-        <!-- Safe Payment Placeholder Section -->
+        <!-- Safe Payment Section -->
         <div class="payment-box">
             <h4 style="color: var(--accent-pink);">💳 Safe Payment Section</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">
-                (GPay / PhonePe / Paytm QR Code एवं UPI ID यहाँ पर आपके करंट अकाउंट विवरण आने के बाद एक्टिवेट कर दिए जाएँगे)
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px; margin-bottom:15px;">
+                नीचे दिए गए QR Code को किसी भी UPI ऐप (GPay, PhonePe, Paytm, BHIM) से स्कैन करके भुगतान करें:
             </p>
+            <div style="background: #ffffff; padding: 12px; display: inline-block; border-radius: 12px; margin-bottom: 15px;">
+                <img src="qr.jpg" alt="Canara Bank Merchant QR Code" style="width: 220px; height: auto; display: block;">
+            </div>
+            <p style="font-size: 0.95rem; font-weight: bold; color: var(--gold); margin-bottom: 10px;">
+                Merchant UPI ID: <span style="color: #fff; background: #0b0712; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--accent-purple); font-size: 0.85rem; word-break: break-all;">ppr.02206.11082023.00094631@cnrb</span>
+            </p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+                *भुगतान पूर्ण करने के बाद स्क्रीनशॉट सुरक्षित रखें और ऊपर दिए गए बुकिंग फ़ॉर्म के माध्यम से व्हाट्सएप पर साझा करें।*
+            </p>
+        </div>
+
+        <!-- Admin Control Link -->
+        <div class="admin-link">
+            <a href="admin.html">🔒 Admin Portal Panel</a>
         </div>
 
     </div>
@@ -762,7 +781,7 @@
             }
         }
 
-        // Handle Booking and Redirect to WhatsApp Username
+        // Handle Booking and Redirect directly to WhatsApp Phone Number
         function handleBooking(e) {
             e.preventDefault();
 
@@ -773,17 +792,19 @@
             var topic = document.getElementById('topic').value;
             var slot = document.getElementById('slot').value;
 
-            // WhatsApp Message Text
+            // Updated WhatsApp Message Text with Real Name included
             var textMessage = "Hello DilKholDesire Support,%0A%0A" +
                 "I want to book an Audio Session:%0A" +
+                "• Real Name (Record): " + encodeURIComponent(realName) + "%0A" +
                 "• Nickname: " + encodeURIComponent(nickName) + "%0A" +
+                "• Mobile No: " + encodeURIComponent(mobileNo) + "%0A" +
                 "• Age: " + encodeURIComponent(age) + "%0A" +
                 "• Topic: " + encodeURIComponent(topic) + "%0A" +
                 "• Time Slot: " + encodeURIComponent(slot) + "%0A%0A" +
                 "(Internal Record Verification Completed)";
 
-            // Redirect to WhatsApp username handle @dilkholdesiresupport
-            window.open("https://wa.me/message/dilkholdesiresupport?text=" + textMessage, "_blank");
+            // Redirect to WhatsApp Phone Number 918630020413
+            window.open("https://wa.me/918630020413?text=" + textMessage, "_blank");
         }
     </script>
 </body>
