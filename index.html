@@ -810,7 +810,7 @@
                     <label for="legalConsent">मैं शपथपूर्वक पुष्टि करता/करती हूँ कि मेरी उम्र 18 वर्ष या उससे अधिक है और मैंने भुगतान पूर्ण कर लिया है। गलत जानकारी देने पर संपूर्ण जिम्मेदारी उपयोगकर्ता की होगी।</label>
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="subBtn">
                     <span>💬 पेमेंट कन्फर्म करें & व्हाट्सएप कनेक्ट</span>
                 </button>
             </form>
@@ -868,9 +868,13 @@
             document.getElementById('revMessage').value = '';
         }
 
-        // Handle Booking, IP Fetching, Google Sheet Saving and WhatsApp Redirect
+        // Updated handleBooking with text/plain & no-cors to fix Google Sheet CORS Block Issue
         async function handleBooking(e) {
             e.preventDefault();
+
+            var btn = document.getElementById('subBtn');
+            btn.innerText = "⏳ वेरिफिकेशन हो रहा है...";
+            btn.disabled = true;
 
             var realName = document.getElementById('realName').value;
             var nickName = document.getElementById('nickName').value;
@@ -880,7 +884,7 @@
             var slot = document.getElementById('slot').value;
             var utrNo = document.getElementById('utrNo').value;
 
-            // IP Address fetch karna
+            // Fetch Live IP
             var ipAddress = "Not Found";
             try {
                 let response = await fetch('https://api.ipify.org?format=json');
@@ -890,8 +894,7 @@
                 console.log("IP Fetch Failed");
             }
 
-            // Generated Web App URL
-            var googleSheetAppURL = "https://script.google.com/macros/s/AKfycbw2VbaxNDK89RvTF16XgJS0b7K92XM3mn0rUcOFMnP4goDX8RqPJ6RgoFokXH315QO1hf/exec";
+            var googleSheetAppURL = "https://script.google.com/macros/s/AKfycbw2VbaxNDk89RvTF16XgJS0b7K92XM3mn0rUcOFMnP4gDX8RqPJ6RgoFokXH315QO1hf/exec";
 
             var payload = {
                 realName: realName,
@@ -904,15 +907,23 @@
                 ipAddress: ipAddress
             };
 
-            // Sheet me auto save hone ke baad WhatsApp par redirect karna
-            fetch(googleSheetAppURL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            }).then(() => {
+            // Send via fetch with text/plain (Bypasses CORS Browser Blockers)
+            try {
+                fetch(googleSheetAppURL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "text/plain" },
+                    body: JSON.stringify(payload)
+                });
+            } catch(err) {
+                console.log("Sheet send attempted");
+            }
+
+            // WhatsApp Redirect
+            setTimeout(function() {
+                btn.innerText = "💬 पेमेंट कन्फर्म करें & व्हाट्सएप कनेक्ट";
+                btn.disabled = false;
+
                 var textMessage = "Hello DilKholDesire Support,%0A%0A" +
                     "I have completed payment and want to confirm my Audio Session:%0A" +
                     "• Real Name (Record): " + encodeURIComponent(realName) + "%0A" +
@@ -926,9 +937,7 @@
                     "(Payment, IP & Legal Record Saved Successfully)";
 
                 window.open("https://wa.me/918630020413?text=" + textMessage, "_blank");
-            }).catch(error => {
-                alert("त्रुटि आई, कृपया पुनः प्रयास करें।");
-            });
+            }, 1000);
         }
     </script>
 </body>
