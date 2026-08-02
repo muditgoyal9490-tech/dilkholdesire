@@ -3,68 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dil Khol Desire - Admin Portal</title>
+    <title>DilKholDesire — Admin Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; background: #0f172a; color: #fff; margin: 0; padding: 20px; }
-        h1 { color: #f43f5e; text-align: center; }
-        .container { max-width: 1000px; margin: auto; background: #1e293b; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
-        th { background: #e11d48; color: white; }
-        tr:nth-child(even) { background: #0f172a; }
-        .ip-badge { background: #3b82f6; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; }
+        :root {
+            --bg-color: #0b0712;
+            --card-bg: #150d22;
+            --accent-pink: #ff007f;
+            --accent-purple: #9d4edd;
+            --text-color: #e0e0e0;
+            --gold: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--accent-pink);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        p.sub {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-purple);
+            border-radius: 12px;
+            overflow-x: auto;
+            padding: 15px;
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 0, 127, 0.2);
+            color: var(--accent-pink);
+            padding: 12px 10px;
+            border-bottom: 2px solid var(--accent-pink);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #2a1b40;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background: rgba(157, 78, 221, 0.1);
+        }
+
+        .refresh-btn {
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .badge-utr {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .badge-ip {
+            color: #25d366;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Admin Control Panel - Booking Records</h1>
-        <p>यहाँ सभी यूज़र्स का डेटा, स्लॉट टाइम और IP एड्रेस सुरक्षित है।</p>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>नाम / निकनेम</th>
-                    <th>मोबाइल नंबर</th>
-                    <th>तारीख व समय</th>
-                    <th>IP एड्रेस</th>
-                </tr>
-            </thead>
-            <tbody id="data-table">
-                <tr>
-                    <td colspan="5" style="text-align:center;">डेटा लोड हो रहा है...</td>
-                </tr>
-            </tbody>
-        </table>
+        <header>
+            <h1>🔒 DilKholDesire Admin Panel</h1>
+            <p class="sub">लाइव बुकिंग रिकॉर्ड्स, IP एड्रेस व पेमेंट यूटीआर ट्रैकर</p>
+        </header>
+
+        <button class="refresh-btn" onclick="fetchAdminData()">🔄 डेटा रीफ्रेश करें (Refresh Data)</button>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>समय (Date/Time)</th>
+                        <th>असली नाम (Real Name)</th>
+                        <th>निकनेम</th>
+                        <th>मोबाइल नंबर</th>
+                        <th>उम्र</th>
+                        <th>विषय (Topic)</th>
+                        <th>स्लॉट (Slot)</th>
+                        <th>UTR Number</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTable">
+                    <tr>
+                        <td colspan="9" style="text-align: center; color: var(--gold);">⏳ गूगल शीट से डेटा लोड हो रहा है...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
-        async function fetchRecords() {
-            try {
-                const res = await fetch('/api/get-bookings');
-                const data = await res.json();
-                const tbody = document.getElementById('data-table');
-                
-                if(!data || data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">अभी कोई रिकॉर्ड मौजूद नहीं है।</td></tr>';
-                    return;
-                }
+        // Aapka Google Web App URL
+        const googleSheetAppURL = "https://script.google.com/macros/s/AKfycbw2VbaxNDk89RvTF16XgJS0b7K92XM3mn0rUcOFMnP4gDX8RqPJ6RgoFokXH315QO1hf/exec";
 
-                tbody.innerHTML = data.map((item, index) => `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${item.name || 'N/A'}</td>
-                        <td>${item.phone || 'N/A'}</td>
-                        <td>${new Date(item.createdAt).toLocaleString('hi-IN')}</td>
-                        <td><span class="ip-badge">${item.ipAddress || 'IP Saved'}</span></td>
-                    </tr>
-                `).join('');
+        async function fetchAdminData() {
+            const tableBody = document.getElementById('dataTable');
+            tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: var(--gold);">⏳ गूगल शीट से डेटा लोड हो रहा है...</td></tr>';
+
+            try {
+                // Fetch data from Google Sheet Web App
+                let response = await fetch(googleSheetAppURL);
+                let data = await response.json();
+
+                if (data && data.length > 1) {
+                    tableBody.innerHTML = '';
+                    // Iterate through rows (Skip header row index 0)
+                    for (let i = data.length - 1; i >= 1; i--) {
+                        let row = data[i];
+                        let tr = document.createElement('tr');
+                        
+                        let dateFormatted = row[0] ? new Date(row[0]).toLocaleString('hi-IN') : '-';
+
+                        tr.innerHTML = `
+                            <td>${dateFormatted}</td>
+                            <td style="font-weight:bold; color:#fff;">${row[1] || '-'}</td>
+                            <td>${row[2] || '-'}</td>
+                            <td>${row[3] || '-'}</td>
+                            <td>${row[4] || '-'}</td>
+                            <td>${row[5] || '-'}</td>
+                            <td>${row[6] || '-'}</td>
+                            <td class="badge-utr">${row[7] || '-'}</td>
+                            <td class="badge-ip">${row[8] || '-'}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    }
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: #a0a0a0;">अभी तक कोई बुकिंग रिकॉर्ड उपलब्ध नहीं है।</td></tr>';
+                }
             } catch (err) {
-                document.getElementById('data-table').innerHTML = '<tr><td colspan="5" style="text-align:center; color:#f87171;">डेटा लोड करने में समस्या आई।</td></tr>';
+                console.error(err);
+                tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: #ff007f;">⚠️ डेटा लोड करने में समस्या आई। कृपया सुनिश्चित करें कि गूगल शीट में कम से कम 1 रिकॉर्ड मौजूद हो या रीफ्रेश करें।</td></tr>';
             }
         }
-        fetchRecords();
+
+        // Auto load on open
+        window.onload = fetchAdminData;
     </script>
 </body>
 </html>
-
