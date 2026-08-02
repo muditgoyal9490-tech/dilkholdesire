@@ -868,7 +868,7 @@
             document.getElementById('revMessage').value = '';
         }
 
-        // Updated handleBooking with text/plain & no-cors to fix Google Sheet CORS Block Issue
+        // Updated handleBooking using URLSearchParams for guaranteed Google Sheets Post
         async function handleBooking(e) {
             e.preventDefault();
 
@@ -884,7 +884,7 @@
             var slot = document.getElementById('slot').value;
             var utrNo = document.getElementById('utrNo').value;
 
-            // Fetch Live IP
+            // Fetch IP
             var ipAddress = "Not Found";
             try {
                 let response = await fetch('https://api.ipify.org?format=json');
@@ -896,30 +896,28 @@
 
             var googleSheetAppURL = "https://script.google.com/macros/s/AKfycbw2VbaxNDk89RvTF16XgJS0b7K92XM3mn0rUcOFMnP4gDX8RqPJ6RgoFokXH315QO1hf/exec";
 
-            var payload = {
-                realName: realName,
-                nickName: nickName,
-                mobileNo: mobileNo,
-                age: age,
-                topic: topic,
-                slot: slot,
-                utrNo: utrNo,
-                ipAddress: ipAddress
-            };
+            // URL Encoded Data payload
+            var formData = new URLSearchParams();
+            formData.append("realName", realName);
+            formData.append("nickName", nickName);
+            formData.append("mobileNo", mobileNo);
+            formData.append("age", age);
+            formData.append("topic", topic);
+            formData.append("slot", slot);
+            formData.append("utrNo", utrNo);
+            formData.append("ipAddress", ipAddress);
 
-            // Send via fetch with text/plain (Bypasses CORS Browser Blockers)
-            try {
-                fetch(googleSheetAppURL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { "Content-Type": "text/plain" },
-                    body: JSON.stringify(payload)
-                });
-            } catch(err) {
-                console.log("Sheet send attempted");
-            }
+            // Direct POST request bypassing CORS
+            fetch(googleSheetAppURL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: formData.toString()
+            });
 
-            // WhatsApp Redirect
+            // Instant Redirect to WhatsApp
             setTimeout(function() {
                 btn.innerText = "💬 पेमेंट कन्फर्म करें & व्हाट्सएप कनेक्ट";
                 btn.disabled = false;
@@ -937,7 +935,7 @@
                     "(Payment, IP & Legal Record Saved Successfully)";
 
                 window.open("https://wa.me/918630020413?text=" + textMessage, "_blank");
-            }, 1000);
+            }, 800);
         }
     </script>
 </body>
